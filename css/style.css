@@ -347,6 +347,7 @@ body {
 #header-inner {
   position: relative;
   overflow: hidden;
+  z-index: 10;
 }
 #banner {
   position: absolute;
@@ -395,7 +396,7 @@ body {
 .main-nav-link {
   float: left;
   color: #fff;
-  opacity: 0.6;
+  font-size: 25px;
   text-decoration: none;
   text-shadow: 0 1px rgba(0,0,0,0.2);
   -webkit-transition: opacity 0.2s;
