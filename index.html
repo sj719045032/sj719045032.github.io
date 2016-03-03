@@ -64,9 +64,9 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-javacript不能精确相加之0.1+0.2！=0.3" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-javacript_add" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2016/03/03/javacript不能精确相加之0.1+0.2！=0.3/" class="article-date">
+    <a href="/2016/03/03/javacript_add/" class="article-date">
   <time datetime="2016-03-03T12:10:57.000Z" itemprop="datePublished">2016-03-03</time>
 </a>
     
@@ -78,7 +78,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/03/03/javacript不能精确相加之0.1+0.2！=0.3/">javacript不能精确相加之0.1+0.2！=0.3</a>
+      <a class="article-title" href="/2016/03/03/javacript_add/">javacript不能精确相加之0.1+0.2！=0.3</a>
     </h1>
   
 
@@ -92,7 +92,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sj719045032.github.io/2016/03/03/javacript不能精确相加之0.1+0.2！=0.3/" data-id="cilc0a7we00004kumqgp2ql2o" class="article-share-link">Share</a>
+      <a data-url="http://sj719045032.github.io/2016/03/03/javacript_add/" data-id="cilc8f6k90004tsumhhcolh5o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascrippt/">javascrippt</a></li></ul>
@@ -130,10 +130,52 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sj719045032.github.io/2016/03/03/simple_grammar/" data-id="cilc2tfmv0000fwumrr7v916v" class="article-share-link">Share</a>
+      <a data-url="http://sj719045032.github.io/2016/03/03/simple_grammar/" data-id="cilc8f6kc0005tsum2fe6wggo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-bibao" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/03/bibao/" class="article-date">
+  <time datetime="2016-03-03T11:02:06.000Z" itemprop="datePublished">2016-03-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/03/bibao/">js闭包之我见</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>   对于闭包，我自己有一点简单的理解</p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推。</p>
+<h2 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a>内存回收机制</h2><p>   一般来说,一个函数在执行开始的时候,会给其中定义的变量划分内存空间保存,以备后面的语句所用,等到函数执行完毕返回了,这些变量就被认为是无用的了.对应的内存空间也就被回收了.</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>   如果这个函数内部又嵌套了另一个函数,而这个函数是有可能在外部被调用到的.并且这个内部函数又使用了外部函数的某些变量的话.这种内存回收机制就会出现问题.如果在外部函数返回后,又直接调用了内部函数,那么内部函数就无法读取到他所需要的外部函数中变量的值了.所以js解释器在遇到函数定义的时候,会自动把函数和他可能使用的变量(包括本地变量和父级和祖先级函数的变量(自由变量))一起保存起来.也就是构建一个闭包,这些变量将不会被内存回收器所回收,只有当内部的函数不可能被调用以后(例如被删除了,或者没有了指针),才会销毁这个闭包,而没有任何一个闭包引用的变量才会被下一次内存回收启动时所回收.<br>   下面来看一下一个例子<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">var</span> li=<span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;li.length;i++)&#123;</span><br><span class="line">li[i].onclicl=functon()&#123;</span><br><span class="line">   alert(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://sj719045032.github.io/2016/03/03/bibao/" data-id="cilc8f6jk0000tsum91oxzpqj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
 
     </footer>
   </div>
@@ -177,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sj719045032.github.io/2016/02/29/hello-world/" data-id="cilc0a7zt00024kume0vx8w4k" class="article-share-link">Share</a>
+      <a data-url="http://sj719045032.github.io/2016/02/29/hello-world/" data-id="cilc8f6k40003tsumxkdo41nl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -213,7 +255,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sj719045032.github.io/2015/03/01/Hello-Hexo/" data-id="cilc0a7zk00014kumzmmpy6r5" class="article-share-link">Share</a>
+      <a data-url="http://sj719045032.github.io/2015/03/01/Hello-Hexo/" data-id="cilc8f6jt0001tsuma7zkmpku" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +277,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascrippt/">javascrippt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascrippt/">javascrippt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/markdown/">markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
     </div>
   </div>
 
@@ -245,7 +287,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">标签云</h3>
     <div class="widget tagcloud">
-      <a href="/tags/javascrippt/" style="font-size: 10px;">javascrippt</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a>
+      <a href="/tags/javascrippt/" style="font-size: 10px;">javascrippt</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/闭包/" style="font-size: 10px;">闭包</a>
     </div>
   </div>
 
@@ -267,11 +309,15 @@
       <ul>
         
           <li>
-            <a href="/2016/03/03/javacript不能精确相加之0.1+0.2！=0.3/">javacript不能精确相加之0.1+0.2！=0.3</a>
+            <a href="/2016/03/03/javacript_add/">javacript不能精确相加之0.1+0.2！=0.3</a>
           </li>
         
           <li>
             <a href="/2016/03/03/simple_grammar/">markdown基本语法</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/03/bibao/">js闭包之我见</a>
           </li>
         
           <li>
