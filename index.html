@@ -76,7 +76,33 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <hr>
+<p>title: javacript不能精确相加之0.1+0.2！=0.3<br>date: 2016-03-3 20:10:57</p>
+<h2 id="tags-javascrippt"><a href="#tags-javascrippt" class="headerlink" title="tags: javascrippt"></a>tags: javascrippt</h2><p>   很久以前发现js小数相加会不精确，网上很多方法是用toFix()函数取相应位数的小数，但是我觉得这个方法不太好,自己研究了一下，可以任意个数字精确相加，代码如下</p>
+<pre><code>function addAcc(){
+    var numbers=&apos;&apos;;
+    if (arguments.length==1){//判断输入参数是一个并且认为是一个数组
+        numbers=arguments[0];
+    }else{
+        numbers=Array.apply(null, arguments);//将arguments对象转换成数组
+    }
+    var maxDecLength=0;
+    numbers.forEach(function(i) {//找出最长的小数位数
+        var decStr = i.toString();
+        if (decStr.indexOf(&apos;.&apos;) !== -1) {
+            var decLength = decStr.split(&apos;.&apos;)[1].length;
+            if (decLength &gt; maxDecLength)
+                maxDecLength = decLength;
+        }
+    });
+    return numbers.map(function(i){//将小数转换成整数
+            return i*Math.pow(10,maxDecLength);
+        }).reduce(function(a,b){//数字相加
+            return a+b;
+        })/Math.pow(10,maxDecLength);//得到最终结果
+}
+</code></pre><p>  使用这个方法可以任意多小数相加，输入参数可以是相加数字的数字，也可以是单个的数字</p>
+
       
     </div>
     <footer class="article-footer">

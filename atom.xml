@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-03-02T08:33:46.448Z</updated>
+  <updated>2016-03-03T09:31:38.318Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,11 +20,41 @@
     <link href="http://yoursite.com/2016/03/02/javacript%E4%B8%8D%E8%83%BD%E7%B2%BE%E7%A1%AE%E7%9B%B8%E5%8A%A0%E4%B9%8B0.1+0.2%EF%BC%81=0.3/"/>
     <id>http://yoursite.com/2016/03/02/javacript不能精确相加之0.1+0.2！=0.3/</id>
     <published>2016-03-02T08:33:46.448Z</published>
-    <updated>2016-03-02T08:33:46.448Z</updated>
+    <updated>2016-03-03T09:31:38.318Z</updated>
     
-    <content type="html"></content>
+    <content type="html">&lt;hr&gt;
+&lt;p&gt;title: javacript不能精确相加之0.1+0.2！=0.3&lt;br&gt;date: 2016-03-3 20:10:57&lt;/p&gt;
+&lt;h2 id=&quot;tags-javascrippt&quot;&gt;&lt;a href=&quot;#tags-javascrippt&quot; class=&quot;headerlink&quot; title=&quot;tags: javascrippt&quot;&gt;&lt;/a&gt;tags: javascrippt&lt;/h2&gt;&lt;p&gt;   很久以前发现js小数相加会不精确，网上很多方法是用toFix()函数取相应位数的小数，但是我觉得这个方法不太好,自己研究了一下，可以任意个数字精确相加，代码如下&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function addAcc(){
+    var numbers=&amp;apos;&amp;apos;;
+    if (arguments.length==1){//判断输入参数是一个并且认为是一个数组
+        numbers=arguments[0];
+    }else{
+        numbers=Array.apply(null, arguments);//将arguments对象转换成数组
+    }
+    var maxDecLength=0;
+    numbers.forEach(function(i) {//找出最长的小数位数
+        var decStr = i.toString();
+        if (decStr.indexOf(&amp;apos;.&amp;apos;) !== -1) {
+            var decLength = decStr.split(&amp;apos;.&amp;apos;)[1].length;
+            if (decLength &amp;gt; maxDecLength)
+                maxDecLength = decLength;
+        }
+    });
+    return numbers.map(function(i){//将小数转换成整数
+            return i*Math.pow(10,maxDecLength);
+        }).reduce(function(a,b){//数字相加
+            return a+b;
+        })/Math.pow(10,maxDecLength);//得到最终结果
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  使用这个方法可以任意多小数相加，输入参数可以是相加数字的数字，也可以是单个的数字&lt;/p&gt;
+</content>
     
     <summary type="html">
+    
+      &lt;hr&gt;
+&lt;p&gt;title: javacript不能精确相加之0.1+0.2！=0.3&lt;br&gt;date: 2016-03-3 20:10:57&lt;/p&gt;
+&lt;h2 id=&quot;tags-javascrippt&quot;&gt;&lt;a href=&quot;#tags-javascrippt&quot; class=&quot;hea
     
     </summary>
     
