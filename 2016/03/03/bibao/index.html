@@ -3,27 +3,27 @@
 <head>
   <meta charset="utf-8">
   
-  <title>js闭包之我��? | Stone&#39;s blog!</title>
+  <title>js闭包之我见 | Stone&#39;s blog!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="对于闭包，我自己有一点简单的理解
-作用域链   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推�??
-内存回收机制   ��?般来��?,��?个函数在执行��?始的时�??,会给其中定义的变量划分内存空间保��?,以备后面的语句所��?,等到函数执行完毕返回��?,这些变量就被认为是无用的��?.对应的内存空间也就被回收��?.
-闭包   如果这">
+作用域链   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推。
+内存回收机制   一般来说,一个函数在执行开始的时候,会给其中定义的变量划分内存空间保存,以备后面的语句所用,等到函数执行完毕返回了,这些变量就被认为是无用的了.对应的内存空间也就被回收了.
+闭包   如果这个函数内部又嵌套了另一个函数,而这个函数是有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="js闭包之我��?">
+<meta property="og:title" content="js闭包之我见">
 <meta property="og:url" content="http://sj719045032.github.io/2016/03/03/bibao/index.html">
 <meta property="og:site_name" content="Stone's blog!">
 <meta property="og:description" content="对于闭包，我自己有一点简单的理解
-作用域链   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推�??
-内存回收机制   ��?般来��?,��?个函数在执行��?始的时�??,会给其中定义的变量划分内存空间保��?,以备后面的语句所��?,等到函数执行完毕返回��?,这些变量就被认为是无用的��?.对应的内存空间也就被回收��?.
-闭包   如果这">
+作用域链   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推。
+内存回收机制   一般来说,一个函数在执行开始的时候,会给其中定义的变量划分内存空间保存,以备后面的语句所用,等到函数执行完毕返回了,这些变量就被认为是无用的了.对应的内存空间也就被回收了.
+闭包   如果这个函数内部又嵌套了另一个函数,而这个函数是有">
 <meta property="og:updated_time" content="2016-03-03T12:55:37.142Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="js闭包之我��?">
+<meta name="twitter:title" content="js闭包之我见">
 <meta name="twitter:description" content="对于闭包，我自己有一点简单的理解
-作用域链   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推�??
-内存回收机制   ��?般来��?,��?个函数在执行��?始的时�??,会给其中定义的变量划分内存空间保��?,以备后面的语句所��?,等到函数执行完毕返回��?,这些变量就被认为是无用的��?.对应的内存空间也就被回收��?.
-闭包   如果这">
+作用域链   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推。
+内存回收机制   一般来说,一个函数在执行开始的时候,会给其中定义的变量划分内存空间保存,以备后面的语句所用,等到函数执行完毕返回了,这些变量就被认为是无用的了.对应的内存空间也就被回收了.
+闭包   如果这个函数内部又嵌套了另一个函数,而这个函数是有">
   
     <link rel="alternate" href="/atom.xml" title="Stone&#39;s blog!" type="application/atom+xml">
   
@@ -86,7 +86,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      js闭包之我��?
+      js闭包之我见
     </h1>
   
 
@@ -95,17 +95,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>   对于闭包，我自己有一点简单的理解</p>
-<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推�??</p>
-<h2 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a>内存回收机制</h2><p>   ��?般来��?,��?个函数在执行��?始的时�??,会给其中定义的变量划分内存空间保��?,以备后面的语句所��?,等到函数执行完毕返回��?,这些变量就被认为是无用的��?.对应的内存空间也就被回收��?.</p>
-<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>   如果这个函数内部又嵌套了另一个函��?,而这个函数是有可能在外部被调用到��?.并且这个内部函数又使用了外部函数的某些变量的��?.这种内存回收机制就会出现问题.如果在外部函数返回后,又直接调用了内部函数,那么内部函数就无法读取到他所��?要的外部函数中变量的值了.��?以js解释器在遇到函数定义的时��?,会自动把函数和他可能使用的变��?(包括本地变量和父级和祖先级函数的变量(自由变量))��?起保存起��?.也就是构建一个闭��?,这些变量将不会被内存回收器所回收,只有当内部的函数不可能被调用以后(例如被删除了,或�?�没有了指针),才会��?毁这个闭��?,而没有任何一个闭包引用的变量才会被下��?次内存回收启动时��?回收.<br>   下面来看��?下一个例��?<br>   java代码��?<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> li=<span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;li.length;i++)&#123;</span><br><span class="line">   li[i].onclick=functon()&#123;</span><br><span class="line">      alert(i);</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
-<p>   html代码��?<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>   运行起来，大家可能很惊讶，全都弹框输��?5;因为onclick绑定的函数都引用了同��?个变量i，循环执行完后i=5；最后点击按钮时，调用函数，找到变量i=5，自然输出是5��?<br>   我们可以改进��?下改吗如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> li = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; li.length; i++) &#123;</span><br><span class="line">            li[i].onclick = (<span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    alert(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<p>   如上面的代码��?示，我们用一个匿名函数，传入i然后立即执行，并且返回需要绑定到onclick事件的函数�?�这样返回的函数都访问到的是匿名函数传入的i的�??,即j的�?��?�这里我们就用到了闭包的特�?�，因为onclick事件绑定了function（）{alert（j）}，所以虽然匿名函数已经执行完并返回了函数，但是局部变量j，仍然还可能被点击事件绑定的函数，还被保存着。当点击事件发生时便执行相应的函数，得到不同的结果�??</p>
+<h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h2><p>   js中函数查找变量的顺序是由内到外的，先查找函数内部的变量，再查找父函数中的变量，以此类推。</p>
+<h2 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a>内存回收机制</h2><p>   一般来说,一个函数在执行开始的时候,会给其中定义的变量划分内存空间保存,以备后面的语句所用,等到函数执行完毕返回了,这些变量就被认为是无用的了.对应的内存空间也就被回收了.</p>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><p>   如果这个函数内部又嵌套了另一个函数,而这个函数是有可能在外部被调用到的.并且这个内部函数又使用了外部函数的某些变量的话.这种内存回收机制就会出现问题.如果在外部函数返回后,又直接调用了内部函数,那么内部函数就无法读取到他所需要的外部函数中变量的值了.所以js解释器在遇到函数定义的时候,会自动把函数和他可能使用的变量(包括本地变量和父级和祖先级函数的变量(自由变量))一起保存起来.也就是构建一个闭包,这些变量将不会被内存回收器所回收,只有当内部的函数不可能被调用以后(例如被删除了,或者没有了指针),才会销毁这个闭包,而没有任何一个闭包引用的变量才会被下一次内存回收启动时所回收.<br>   下面来看一下一个例子<br>   java代码：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> li=<span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">1</span>;i&lt;li.length;i++)&#123;</span><br><span class="line">   li[i].onclick=functon()&#123;</span><br><span class="line">      alert(i);</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>   html代码：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>   运行起来，大家可能很惊讶，全都弹框输出5;因为onclick绑定的函数都引用了同一个变量i，循环执行完后i=5；最后点击按钮时，调用函数，找到变量i=5，自然输出是5。<br>   我们可以改进一下改吗如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> li = <span class="built_in">document</span>.getElementsByTagName(<span class="string">'li'</span>);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; li.length; i++) &#123;</span><br><span class="line">            li[i].onclick = (<span class="function"><span class="keyword">function</span> (<span class="params">j</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    alert(j);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;)(i);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>   如上面的代码所示，我们用一个匿名函数，传入i然后立即执行，并且返回需要绑定到onclick事件的函数。这样返回的函数都访问到的是匿名函数传入的i的值,即j的值。这里我们就用到了闭包的特性，因为onclick事件绑定了function（）{alert（j）}，所以虽然匿名函数已经执行完并返回了函数，但是局部变量j，仍然还可能被点击事件绑定的函数，还被保存着。当点击事件发生时便执行相应的函数，得到不同的结果。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sj719045032.github.io/2016/03/03/bibao/" data-id="cilc8f6jk0000tsum91oxzpqj" class="article-share-link">Share</a>
+      <a data-url="http://sj719045032.github.io/2016/03/03/bibao/" data-id="cilcars3200006kum7gh22lkt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包-javascript/">闭包 javascript</a></li></ul>
@@ -128,7 +128,7 @@
   
     <a href="/2016/03/03/javacript_add/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">javacript不能精确相加��?0.1+0.2��?=0.3</div>
+      <div class="article-nav-title">javacript不能精确相加之0.1+0.2！=0.3</div>
     </a>
   
 </nav>
@@ -183,11 +183,11 @@
           </li>
         
           <li>
-            <a href="/2016/03/03/bibao/">js闭包之我��?</a>
+            <a href="/2016/03/03/bibao/">js闭包之我见</a>
           </li>
         
           <li>
-            <a href="/2016/03/03/javacript_add/">javacript不能精确相加��?0.1+0.2��?=0.3</a>
+            <a href="/2016/03/03/javacript_add/">javacript不能精确相加之0.1+0.2！=0.3</a>
           </li>
         
       </ul>
