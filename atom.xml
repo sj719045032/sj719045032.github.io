@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-03T10:12:52.272Z</updated>
+  <updated>2016-03-03T10:07:52.607Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -14,28 +14,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>javacript不能精确相加之0.1+0.2！=0.3</title>
-    <link href="http://sj719045032.github.io/2016/03/03/javacript_add/"/>
-    <id>http://sj719045032.github.io/2016/03/03/javacript_add/</id>
-    <published>2016-03-03T12:10:57.000Z</published>
-    <updated>2016-03-03T10:12:52.272Z</updated>
-    
-    <content type="html">&lt;p&gt;   很久以前发现js小数相加会不精确，网上很多方法是用toFix()函数取相应位数的小数，但是我觉得这个方法不太好,自己研究了一下，可以任意个数字精确相加，代码如下&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function addAcc()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var numbers=&amp;apos;&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if (arguments.length==1)&amp;#123;//判断输入参数是一个并且认为是一个数组&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        numbers=arguments[0];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        numbers=Array.apply(null, arguments);//将arguments对象转换成数组&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var maxDecLength=0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    numbers.forEach(function(i) &amp;#123;//找出最长的小数位数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        var decStr = i.toString();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        if (decStr.indexOf(&amp;apos;.&amp;apos;) !== -1) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var decLength = decStr.split(&amp;apos;.&amp;apos;)[1].length;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            if (decLength &amp;gt; maxDecLength)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                maxDecLength = decLength;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return numbers.map(function(i)&amp;#123;//将小数转换成整数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return i*Math.pow(10,maxDecLength);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;).reduce(function(a,b)&amp;#123;//数字相加&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return a+b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;)/Math.pow(10,maxDecLength);//得到最终结果&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
-&lt;p&gt;  使用这个方法可以任意多小数相加，输入参数可以是相加数字的数字，也可以是单个的数字&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;   很久以前发现js小数相加会不精确，网上很多方法是用toFix()函数取相应位数的小数，但是我觉得这个方法不太好,自己研究了一下，可以任意个数字精确相加，代码如下&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cla
-    
-    </summary>
-    
-    
-      <category term="javascrippt" scheme="http://sj719045032.github.io/tags/javascrippt/"/>
-    
-  </entry>
   
   <entry>
     <title>markdown基本语法</title>
@@ -79,6 +57,28 @@
     
     
       <category term="闭包" scheme="http://sj719045032.github.io/tags/%E9%97%AD%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javacript不能精确相加之0.1+0.2！=0.3</title>
+    <link href="http://sj719045032.github.io/2016/03/03/javacript_add/"/>
+    <id>http://sj719045032.github.io/2016/03/03/javacript_add/</id>
+    <published>2016-03-03T08:10:57.000Z</published>
+    <updated>2016-03-03T12:14:28.274Z</updated>
+    
+    <content type="html">&lt;p&gt;   很久以前发现js小数相加会不精确，网上很多方法是用toFix()函数取相应位数的小数，但是我觉得这个方法不太好,自己研究了一下，可以任意个数字精确相加，代码如下&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function addAcc()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var numbers=&amp;apos;&amp;apos;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if (arguments.length==1)&amp;#123;//判断输入参数是一个并且认为是一个数组&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        numbers=arguments[0];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        numbers=Array.apply(null, arguments);//将arguments对象转换成数组&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var maxDecLength=0;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    numbers.forEach(function(i) &amp;#123;//找出最长的小数位数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        var decStr = i.toString();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        if (decStr.indexOf(&amp;apos;.&amp;apos;) !== -1) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            var decLength = decStr.split(&amp;apos;.&amp;apos;)[1].length;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            if (decLength &amp;gt; maxDecLength)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                maxDecLength = decLength;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return numbers.map(function(i)&amp;#123;//将小数转换成整数&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return i*Math.pow(10,maxDecLength);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;).reduce(function(a,b)&amp;#123;//数字相加&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            return a+b;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;)/Math.pow(10,maxDecLength);//得到最终结果&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;  使用这个方法可以任意多小数相加，输入参数可以是相加数字的数字，也可以是单个的数字&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;   很久以前发现js小数相加会不精确，网上很多方法是用toFix()函数取相应位数的小数，但是我觉得这个方法不太好,自己研究了一下，可以任意个数字精确相加，代码如下&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td cla
+    
+    </summary>
+    
+    
+      <category term="javascrippt" scheme="http://sj719045032.github.io/tags/javascrippt/"/>
     
   </entry>
   
