@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-03T10:07:52.607Z</updated>
+  <updated>2016-03-08T04:27:53.786Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>2016阿里实习生第一次电话面试总结</title>
+    <link href="http://sj719045032.github.io/2016/03/08/ali-interview/"/>
+    <id>http://sj719045032.github.io/2016/03/08/ali-interview/</id>
+    <published>2016-03-08T03:58:08.000Z</published>
+    <updated>2016-03-08T04:27:53.786Z</updated>
+    
+    <content type="html">&lt;p&gt;　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;1angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&lt;br&gt; 由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好，只知道angular内部维持一个循环，当有输入改变，或者是内部绑定的变量改变后，等下次启动循环就会改变内部变量，或者dom渲染的数据。后面上网查了资料，解释如下：&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;1angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&lt;br&gt; 由于我简历里面写了我用angular做过
+    
+    </summary>
+    
+    
+      <category term="面试" scheme="http://sj719045032.github.io/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>markdown基本语法</title>
