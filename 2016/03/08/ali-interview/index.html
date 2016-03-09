@@ -7,20 +7,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
 
-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://se">
+angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同
+　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2016阿里实习生第一次电话面试总结">
 <meta property="og:url" content="http://sj719045032.github.io/2016/03/08/ali-interview/index.html">
 <meta property="og:site_name" content="Stone's blog!">
 <meta property="og:description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
 
-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://se">
-<meta property="og:updated_time" content="2016-03-09T10:41:25.917Z">
+angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同
+　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://s">
+<meta property="og:updated_time" content="2016-03-09T10:50:33.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2016阿里实习生第一次电话面试总结">
 <meta name="twitter:description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
 
-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://se">
+angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同
+　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://s">
   
     <link rel="alternate" href="/atom.xml" title="Stone&#39;s blog!" type="application/atom+xml">
   
@@ -93,7 +96,9 @@ angular数据双向绑定的原理，以及与检测对象改变的实现双向�
       
         <p>　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。</p>
 <ol>
-<li>angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同<br>　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细<a href="http://sentsin.com/web/779.html" target="_blank" rel="external">http://sentsin.com/web/779.html</a>.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。</li>
+<li><p>angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同</p>
+<p>　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细<a href="http://sentsin.com/web/779.html" target="_blank" rel="external">http://sentsin.com/web/779.html</a>.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。</p>
+</li>
 <li><p>angular依赖注入</p>
 <p>在angular有下面三种方式:</p>
 <ul>
@@ -107,26 +112,28 @@ angular数据双向绑定的原理，以及与检测对象改变的实现双向�
 <ul>
 <li><p>数组标注</p>
 <p>   myModule.controller(‘myController’,[‘$scope’,’myService’,function($scope,myService){<br>   //your code.<br>   }]);</p>
-<p>  在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：</p>
-<p>   myModule.controller(‘myController’,[‘$scope’,’myService’,function(myScope,aService){<br>   //your code.<br>   }]);</p>
-<p>  这样myScope便对应$scope服务，aService对应myService。</p>
 </li>
 </ul>
+<p>在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：</p>
+<pre><code>myModule.controller(&apos;myController&apos;,[&apos;$scope&apos;,&apos;myService&apos;,function(myScope,aService){
+//your code.            
+}]);
+</code></pre><p>这样myScope便对应$scope服务，aService对应myService。</p>
 </li>
 </ol>
 <ul>
 <li><p>$inject属性</p>
-<p>   var myController=function($scope,myService){</p>
-<pre><code>//your code.            
+<pre><code>var myController=function($scope,myService){
+//your code.            
 }];
 myController.$inject=[&apos;$scope&apos;,&apos;myService&apos;];
 myModule.controller(&apos;myController&apos;,myController);
 </code></pre></li>
 <li><p>隐式声明依赖</p>
-<p>   myModule.controller(‘myController’,function($scope,myService){</p>
-<pre><code>//your code.            
-});
-</code></pre><p>  将构造函数的参数设为需要依赖的服务名，这样注入器就会自动查找需要依赖的服务</p>
+<pre><code>myModule.controller(&apos;myController&apos;,function($scope,myService){
+       //your code.            
+       });
+</code></pre><p>将构造函数的参数设为需要依赖的服务名，这样注入器就会自动查找需要依赖的服务</p>
 </li>
 </ul>
 <ol>
@@ -182,7 +189,6 @@ myModule.controller(&apos;myController&apos;,myController);
 <pre><code>function myFunc() {
    console.log(this.x)
 }
-
 var myObject = {};
 myObject.x = &quot;stone&quot;;
 myObject.myFunc = myFunc;
@@ -194,24 +200,19 @@ function myFunc() {
          this.x = &quot;water&quot;
          console.log(this.x)
 }
-
 myFunc();//输出为‘water’
 </code></pre></li>
 <li><p>作为构造函数调用<br>   作为构造函数，this指向生成的对象。</p>
 <p>   function Stone() {</p>
 <pre><code>this.name = &quot;stone&quot;;
-</code></pre><p>   }</p>
-<p>   myStone = new Stone();</p>
-<p>   console.log(myStone.name);//输入‘stone’</p>
+</code></pre><p>   }<br>   myStone = new Stone();<br>   console.log(myStone.name);//输入‘stone’</p>
 </li>
 <li><p>通过apply/call调用<br>  apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
 <p>   name = ‘Global’;<br>   var Stone = {</p>
 <pre><code>name: &apos;Stone&apos;
-</code></pre><p>   };</p>
-<p>   function showName() {</p>
+</code></pre><p>   };<br>   function showName() {</p>
 <pre><code>console.log(this.name);
-</code></pre><p>   }</p>
-<p>   showName.apply();//输入为‘Global’,未改变this指向<br>   showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象</p>
+</code></pre><p>   }<br>   showName.apply();//输入为‘Global’,未改变this指向<br>   showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象</p>
 </li>
 <li><p>自执行函数<br> 自行函数this指向全局对象，浏览器中是window</p>
 <p>   name=’Global’;<br>   var Stone={</p>
@@ -222,8 +223,7 @@ showName:function(){
         console.log(this.name);
     })();
 }
-</code></pre><p>   };</p>
-<p>   Stone.showName();//输出stone Global</p>
+</code></pre><p>   };<br>   Stone.showName();//输出stone Global</p>
 </li>
 </ul>
 </li>
@@ -314,7 +314,7 @@ showName:function(){
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://sj719045032.github.io/2016/03/08/ali-interview/" data-id="cilkq0yi60000z0umo5hf5wk3" class="article-share-link">Share</a>
+      <a data-url="http://sj719045032.github.io/2016/03/08/ali-interview/" data-id="cilkq6hrw0000fsumtvut9tdz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/面试/">面试</a></li></ul>
