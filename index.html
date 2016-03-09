@@ -181,7 +181,7 @@ myModule.controller(&apos;myController&apos;,myController);
 <ul>
 <li><p>作为对象方法调用<br>如果函数作为某个对象的方法调用，那么this绑定到这个对象上。</p>
 <pre><code>function myFunc() {
-   console.log(this.x)
+   console.log(this.x);
 }
 var myObject = {};
 myObject.x = &quot;stone&quot;;
@@ -191,8 +191,8 @@ myObject.myFunc();//输入为‘stone’
 <li><p>作为函数调用<br> 如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。</p>
 <pre><code>var x = &apos;stone&apos;;
 function myFunc() {
-         this.x = &quot;water&quot;
-         console.log(this.x)
+         this.x = &quot;water&quot;;
+         console.log(this.x);
 }
 myFunc();//输出为‘water’
 </code></pre></li>
