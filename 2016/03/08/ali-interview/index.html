@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
 
-1angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同 由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好，只知道angular内部维持一个循环，当有输入改变，或者是内部绑">
+angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://se">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2016阿里实习生第一次电话面试总结">
 <meta property="og:url" content="http://sj719045032.github.io/2016/03/08/ali-interview/index.html">
 <meta property="og:site_name" content="Stone's blog!">
 <meta property="og:description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
 
-1angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同 由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好，只知道angular内部维持一个循环，当有输入改变，或者是内部绑">
-<meta property="og:updated_time" content="2016-03-08T04:27:53.786Z">
+angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://se">
+<meta property="og:updated_time" content="2016-03-09T09:01:18.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2016阿里实习生第一次电话面试总结">
 <meta name="twitter:description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
 
-1angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同 由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好，只知道angular内部维持一个循环，当有输入改变，或者是内部绑">
+angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://se">
   
     <link rel="alternate" href="/atom.xml" title="Stone&#39;s blog!" type="application/atom+xml">
   
@@ -91,9 +91,289 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。</p>
+        <p>　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。</p>
 <ol>
-<li>1angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同<br> 由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好，只知道angular内部维持一个循环，当有输入改变，或者是内部绑定的变量改变后，等下次启动循环就会改变内部变量，或者dom渲染的数据。后面上网查了资料，解释如下：</li>
+<li>angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同<br>　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细<a href="http://sentsin.com/web/779.html" target="_blank" rel="external">http://sentsin.com/web/779.html</a>.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。</li>
+<li><p>angular依赖注入</p>
+<pre><code>在angular有下面三种方式:
+- 通过数组标注在方法的参数中声明依赖（优先考虑）
+
+- 定义在控制器构造方法的$inject属性中
+
+- 通过方法参数名隐式的添加(有些注意事项)
+</code></pre><h3 id="数组标注"><a href="#数组标注" class="headerlink" title="数组标注"></a>数组标注</h3><pre><code> myModule.controller(&apos;myController&apos;,[&apos;$scope&apos;,&apos;myService&apos;,function($scope,myService){
+ //your code.            
+ }]);
+
+在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：
+
+ myModule.controller(&apos;myController&apos;,[&apos;$scope&apos;,&apos;myService&apos;,function(myScope,aService){
+ //your code.            
+ }]);
+
+这样myScope便对应$scope服务，aService对应myService。
+</code></pre></li>
+</ol>
+<pre><code>### $inject属性
+
+    var myController=function($scope,myService){
+     //your code.            
+     }];
+     myController.$inject=[&apos;$scope&apos;,&apos;myService&apos;];
+     myModule.controller(&apos;myController&apos;,myController);
+
+### 隐式声明依赖
+
+    myModule.controller(&apos;myController&apos;,function($scope,myService){
+            //your code.            
+            });
+   将构造函数的参数设为需要依赖的服务名，这样注入器就会自动查找需要依赖的服务
+</code></pre><ol>
+<li><p>闭包及其优缺点</p>
+<p>闭包定义：javascript允许使用内部函数，内部函数可以访问它们所在的外部函数中声明的所有局部变量、参数和声明的其他内部函数。当其中一个这样的内部函数在包含它们的外部函数之外被调用时，就会形成闭包。</p>
+<ul>
+<li>优点：<ul>
+<li>不增加额外的全局变量。</li>
+<li>执行过程中所有变量都是在匿名函数内部。</li>
+<li>加强封装性</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>由于闭包会使得函数中的变量都被保存在内存中，内存消耗很大，所以不能滥用闭包，否则会造成网页的性能问题，在IE中可能导致内存泄露。解决方法是，在退出函数之前，将不使用的局部变量全部删除。</li>
+<li>闭包会在父函数外部，改变父函数内部变量的值。所以，如果你把父函数当作对象（object）使用，把闭包当作它的公用方法（Public Method），把内部变量当作它的私有属性（private value），这时一定要小心，不要随便改变父函数内部变量的值。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>ajax优缺点</p>
+<p>ajax：AJAX全称为“Asynchronous JavaScript and XML”（异步JavaScript和XML），是一种创建交互式网页应用的网页开发技术。它使用：</p>
+<ul>
+<li>使用XHTML+CSS来标准化呈现；</li>
+<li>使用XML和XSLT进行数据交换及相关操作；</li>
+<li>使用XMLHttpRequest对象与Web服务器进行异步数据通信； </li>
+<li>使用Javascript操作Document Object Model进行动态显示及交互； </li>
+<li>使用JavaScript绑定和处理所有数据。</li>
+</ul>
+<ul>
+<li>优点：<ul>
+<li>无刷新更新数据</li>
+<li>异步与服务器通信</li>
+<li>前端和后端负载平衡</li>
+<li>基于标准被广泛支持</li>
+<li>界面与应用分离</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>无法使用Back和History功能</li>
+<li>安全问题 AJAX暴露了与服务器交互的细节</li>
+<li>对搜索引擎的支持比较弱</li>
+<li>破坏了程序的异常机制</li>
+<li>违背URL和资源定位的初衷</li>
+<li>客户端过肥，太多客户端代码造成开发上的成本</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>javascript中的this理解</p>
+<p>this是Javascript语言的一个关键字它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。</p>
+<ul>
+<li><p>作为对象方法调用<br>如果函数作为某个对象的方法调用，那么this绑定到这个对象上。</p>
+<pre><code>function myFunc() {
+   console.log(this.x)
+}
+
+var myObject = {};
+myObject.x = &quot;stone&quot;;
+myObject.myFunc = myFunc;
+myObject.myFunc();//输入为‘stone’
+</code></pre></li>
+<li><p>作为函数调用<br> 如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。</p>
+<pre><code>var x = &apos;stone&apos;;
+function myFunc() {
+         this.x = &quot;water&quot;
+         console.log(this.x)
+}
+
+myFunc();//输出为‘water’
+</code></pre></li>
+<li><p>作为构造函数调用<br>   作为构造函数，this指向生成的对象。</p>
+<p>   function Stone() {</p>
+<pre><code>this.name = &quot;stone&quot;;
+</code></pre><p>   }</p>
+<p>   myStone = new Stone();</p>
+<p>   console.log(myStone.name);//输入‘stone’</p>
+</li>
+<li><p>通过apply/call调用<br>  apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
+<p>   name = ‘Global’;<br>   var Stone = {</p>
+<pre><code>name: &apos;Stone&apos;
+</code></pre><p>   };</p>
+<p>   function showName() {</p>
+<pre><code>console.log(this.name);
+</code></pre><p>   }</p>
+<p>   showName.apply();//输入为‘Global’,未改变this指向<br>   showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象</p>
+</li>
+<li><p>自执行函数<br> 自行函数this指向全局对象，浏览器中是window</p>
+<p>   name=’Global’;<br>   var Stone={</p>
+<pre><code>name:&apos;stone&apos;,
+showName:function(){
+    console.log(this.name);
+    (function(){
+        console.log(this.name);
+    })();
+}
+</code></pre><p>   };</p>
+<p>   Stone.showName();//输出stone Global</p>
+</li>
+</ul>
+</li>
+<li><p>position几种属性</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>absolute</td>
+<td>生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</td>
+</tr>
+<tr>
+<td>fixed</td>
+<td>生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</td>
+</tr>
+<tr>
+<td>relative</td>
+<td>生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。</td>
+</tr>
+<tr>
+<td>static</td>
+<td>默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。</td>
+</tr>
+<tr>
+<td>inherit</td>
+<td>规定应该从父元素继承 position 属性的值。</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>display属性</p>
+<ul>
+<li><p>inline</p>
+<p>行内元素</p>
+<ul>
+<li>和其他元素都在一行上</li>
+<li>元素的高度、宽度、行高及顶部和底部边距不可设置</li>
+<li>元素的宽度就是它包含的文字或图片的宽度，不可改变</li>
+</ul>
+</li>
+<li><p>block </p>
+<p>块元素</p>
+<ul>
+<li>每个块级元素都从新的一行开始，并且其后的元素也另起一行</li>
+<li>元素的高度、宽度、行高以及顶和底边距都可设置</li>
+<li>元素宽度在不设置的情况下，是它本身父容器的100%（和父元素的宽度一致），除非设定一个宽度</li>
+</ul>
+</li>
+<li><p>inline-block</p>
+<p>inline-block既具有block的宽高特性又具有inline的同行元素特性。</p>
+</li>
+</ul>
+</li>
+<li><p>BFC(Block formatting context)块级格式化上下文</p>
+<p>它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
+<ul>
+<li><p>BFC布局规则：</p>
+<ul>
+<li>内部的Box会在垂直方向，一个接一个地放置。</li>
+<li>Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠</li>
+<li>每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。</li>
+<li>BFC的区域不会与float box重叠。</li>
+<li>BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。</li>
+<li>计算BFC的高度时，浮动元素也参与计算</li>
+</ul>
+</li>
+<li><p>产生BFC的元素</p>
+<ul>
+<li>根元素</li>
+<li>float属性不为none</li>
+<li>position为absolute或fixed</li>
+<li>display为inline-block, table-cell, table-caption, flex, inline-flex</li>
+<li>overflow不为visible</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<ol>
+<li>OSI七层模型</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>OSI层</th>
+<th>功能</th>
+<th>协议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>应用层(Application layer)</td>
+<td>文件传输，电子邮件，文件服务，虚拟终端</td>
+<td>TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet</td>
+</tr>
+<tr>
+<td>表示层</td>
+<td>数据格式化，代码转换，数据加密</td>
+<td>没有协议</td>
+</tr>
+<tr>
+<td>会话层</td>
+<td>解除或建立与别的接点的联系</td>
+<td>没有协议</td>
+</tr>
+<tr>
+<td>传输层</td>
+<td>提供端对端的接口</td>
+<td>TCP，UDP</td>
+</tr>
+<tr>
+<td>网络层</td>
+<td>为数据包选择路由</td>
+<td>IP，ICMP，RIP，OSPF，BGP，IGMP</td>
+</tr>
+<tr>
+<td>数据链路层</td>
+<td>传输有地址的帧以及错误检测功能</td>
+<td>SLIP，CSLIP，PPP，ARP，RARP，MTU</td>
+</tr>
+<tr>
+<td>物理层</td>
+<td>以二进制数据形式在物理媒体上传输数据</td>
+<td>ISO2110，IEEE802，IEEE802.2</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>http</p>
+<p>HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写</p>
+<ul>
+<li><p>工作流程</p>
+<ul>
+<li>首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始</li>
+<li>建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。</li>
+<li>服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。</li>
+<li>客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。</li>
+</ul>
+</li>
+<li><p>常用状态吗</p>
+</li>
+</ul>
+<p>|     消息        |描述|<br>| ——-    | ——–|<br>|200（成功）    |服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。|<br>|301（永久移动）|    请求的网页已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。您应使用此代码告诉 Googlebot 某个网页或网站已永久移动到新位置。|<br>|302（临时移动）|    服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来响应以后的请求。此代码与响应 GET 和 HEAD 请求的 301 代码类似，会自动将请求者转到不同的位置，但您不应使用此代码来告诉 Googlebot 某个网页或网站已经移动，因为 Googlebot 会继续抓取原有位置并编制索引。<br>| 304（未修改）|自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应（称为 If-Modified-Since HTTP 标头）。服务器可以告诉 Googlebot 自从上次抓取后网页没有变更，进而节省带宽和开销。 |<br>|404（未找到）|服务器找不到请求的网页。例如，对于服务器上不存在的网页经常会返回此代码。|<br>|503（服务不可用）    |服务器目前无法使用（由于超载或停机维护）。通常，这只是暂时状态。|</p>
+</li>
 </ol>
 
       
