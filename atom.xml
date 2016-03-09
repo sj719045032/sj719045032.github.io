@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-09T10:59:54.801Z</updated>
+  <updated>2016-03-09T11:08:48.586Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sj719045032.github.io/2016/03/08/ali-interview/"/>
     <id>http://sj719045032.github.io/2016/03/08/ali-interview/</id>
     <published>2016-03-08T03:58:08.000Z</published>
-    <updated>2016-03-09T10:59:54.801Z</updated>
+    <updated>2016-03-09T11:08:48.586Z</updated>
     
     <content type="html">&lt;p&gt;　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
 &lt;ol&gt;
@@ -37,18 +37,20 @@
 &lt;li&gt;&lt;p&gt;通过方法参数名隐式的添加(有些注意事项)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;数组标注&lt;/p&gt;
-&lt;p&gt;   myModule.controller(‘myController’,[‘$scope’,’myService’,function($scope,myService){&lt;br&gt;   //your code.&lt;br&gt;   }]);&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;myModule.controller(&amp;apos;myController&amp;apos;,[&amp;apos;$scope&amp;apos;,&amp;apos;myService&amp;apos;,function($scope,myService){
+//your code.            
+}]);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;myModule.controller(&amp;apos;myController&amp;apos;,[&amp;apos;$scope&amp;apos;,&amp;apos;myService&amp;apos;,function(myScope,aService){
 //your code.            
 }]);
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样myScope便对应$scope服务，aService对应myService。&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ol&gt;
+&lt;/ul&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;$inject属性&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var myController=function($scope,myService){
@@ -315,9 +317,9 @@ Stone.showName();//输出stone Global
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;常用状态吗&lt;/p&gt;
-&lt;p&gt;  |     消息        |描述|&lt;br&gt;  | ——-    | ——–|&lt;br&gt;  |200（成功）    |服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。|&lt;br&gt;  |301（永久移动）|    请求的网页已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。您应使用此代码告诉 Googlebot 某个网页或网站已永久移动到新位置。|&lt;br&gt;  |302（临时移动）|    服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来响应以后的请求。此代码与响应 GET 和 HEAD 请求的 301 代码类似，会自动将请求者转到不同的位置，但您不应使用此代码来告诉 Googlebot 某个网页或网站已经移动，因为 Googlebot 会继续抓取原有位置并编制索引。&lt;br&gt;  | 304（未修改）|自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应（称为 If-Modified-Since HTTP 标头）。服务器可以告诉 Googlebot 自从上次抓取后网页没有变更，进而节省带宽和开销。 |&lt;br&gt;  |404（未找到）|服务器找不到请求的网页。例如，对于服务器上不存在的网页经常会返回此代码。|&lt;br&gt;  |503（服务不可用）    |服务器目前无法使用（由于超载或停机维护）。通常，这只是暂时状态。|&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;|     消息        |描述|&lt;br&gt;| ——-    | ——–|&lt;br&gt;|200（成功）    |服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。|&lt;br&gt;|301（永久移动）|    请求的网页已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。您应使用此代码告诉 Googlebot 某个网页或网站已永久移动到新位置。|&lt;br&gt;|302（临时移动）|    服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来响应以后的请求。此代码与响应 GET 和 HEAD 请求的 301 代码类似，会自动将请求者转到不同的位置，但您不应使用此代码来告诉 Googlebot 某个网页或网站已经移动，因为 Googlebot 会继续抓取原有位置并编制索引。&lt;br&gt;| 304（未修改）|自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应（称为 If-Modified-Since HTTP 标头）。服务器可以告诉 Googlebot 自从上次抓取后网页没有变更，进而节省带宽和开销。 |&lt;br&gt;|404（未找到）|服务器找不到请求的网页。例如，对于服务器上不存在的网页经常会返回此代码。|&lt;br&gt;|503（服务不可用）    |服务器目前无法使用（由于超载或停机维护）。通常，这只是暂时状态。|&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 </content>
