@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-09T09:07:45.148Z</updated>
+  <updated>2016-03-09T10:41:25.917Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sj719045032.github.io/2016/03/08/ali-interview/"/>
     <id>http://sj719045032.github.io/2016/03/08/ali-interview/</id>
     <published>2016-03-08T03:58:08.000Z</published>
-    <updated>2016-03-09T09:07:45.148Z</updated>
+    <updated>2016-03-09T10:41:25.917Z</updated>
     
     <content type="html">&lt;p&gt;　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
 &lt;ol&gt;
@@ -158,40 +158,20 @@ showName:function(){
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;position几种属性&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;js事件代理（委托）&lt;/p&gt;
+&lt;p&gt;事件阶段：事件捕获-&amp;gt;目标-&amp;gt;事件冒泡&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;事件捕获阶段&lt;br&gt;   事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是遍历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。在实际应用中，我们并没有太多使用捕获阶段监听的用例，但是通过在捕获阶段对事件的处理，我们可以阻止类似click事件在某个特定元素上被触发。&lt;/li&gt;
+&lt;li&gt;目标阶段&lt;br&gt;   当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，知道传播到最外层的文档节点。&lt;/li&gt;
+&lt;li&gt;冒泡阶段&lt;br&gt;   事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。 &lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;值&lt;/th&gt;
-&lt;th&gt;描述&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;absolute&lt;/td&gt;
-&lt;td&gt;生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;fixed&lt;/td&gt;
-&lt;td&gt;生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;relative&lt;/td&gt;
-&lt;td&gt;生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;static&lt;/td&gt;
-&lt;td&gt;默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;inherit&lt;/td&gt;
-&lt;td&gt;规定应该从父元素继承 position 属性的值。&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;   事件代理：把事件处理器添加到一个父级元素上。默认情况下，由于事件在目标元素上面触发后，还会一次冒泡到DOM树最上层，所以事件代理得以实现。这样我们可以在上层元素通过判断事件的目标，来对目标元素采取相应的操作。&lt;/p&gt;
 &lt;ol&gt;
+&lt;li&gt;&lt;p&gt;position几种属性&lt;/p&gt;
+&lt;p&gt; | 值      | 描述                                                             |&lt;br&gt; | —–   |: ——————————————————-        |&lt;br&gt; |absolute | 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。     |&lt;br&gt; |fixed    |生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。 |&lt;br&gt; |relative | 生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。|&lt;br&gt; |static   |默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。|&lt;br&gt; |inherit  |规定应该从父元素继承 position 属性的值。|&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;display属性&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;inline&lt;/p&gt;
@@ -241,55 +221,9 @@ showName:function(){
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;ol&gt;
-&lt;li&gt;OSI七层模型&lt;/li&gt;
-&lt;/ol&gt;
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th&gt;OSI层&lt;/th&gt;
-&lt;th&gt;功能&lt;/th&gt;
-&lt;th&gt;协议&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td&gt;应用层(Application layer)&lt;/td&gt;
-&lt;td&gt;文件传输，电子邮件，文件服务，虚拟终端&lt;/td&gt;
-&lt;td&gt;TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;表示层&lt;/td&gt;
-&lt;td&gt;数据格式化，代码转换，数据加密&lt;/td&gt;
-&lt;td&gt;没有协议&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;会话层&lt;/td&gt;
-&lt;td&gt;解除或建立与别的接点的联系&lt;/td&gt;
-&lt;td&gt;没有协议&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;传输层&lt;/td&gt;
-&lt;td&gt;提供端对端的接口&lt;/td&gt;
-&lt;td&gt;TCP，UDP&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;网络层&lt;/td&gt;
-&lt;td&gt;为数据包选择路由&lt;/td&gt;
-&lt;td&gt;IP，ICMP，RIP，OSPF，BGP，IGMP&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;数据链路层&lt;/td&gt;
-&lt;td&gt;传输有地址的帧以及错误检测功能&lt;/td&gt;
-&lt;td&gt;SLIP，CSLIP，PPP，ARP，RARP，MTU&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;物理层&lt;/td&gt;
-&lt;td&gt;以二进制数据形式在物理媒体上传输数据&lt;/td&gt;
-&lt;td&gt;ISO2110，IEEE802，IEEE802.2&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;OSI七层模型&lt;/p&gt;
+&lt;p&gt;| OSI层    | 功能 | 协议 |&lt;br&gt;| ——  | ——-| —–|&lt;br&gt;| 应用层   | 文件传输，电子邮件，文件服务，虚拟终端 |TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet|&lt;br&gt;|表示层    |数据格式化，代码转换，数据加密 |没有协议|&lt;br&gt;|会话层    |解除或建立与别的接点的联系 |没有协议|&lt;br&gt;|传输层    |提供端对端的接口 |TCP，UDP |&lt;br&gt;|网络层    |为数据包选择路由 |IP，ICMP，RIP，OSPF，BGP，IGMP|&lt;br&gt;|数据链路层| 传输有地址的帧以及错误检测功能 |SLIP，CSLIP，PPP，ARP，RARP，MTU|&lt;br&gt;|物理层     |以二进制数据形式在物理媒体上传输数据| ISO2110，IEEE802，IEEE802.2 | &lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;http&lt;/p&gt;
 &lt;p&gt;HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写&lt;/p&gt;
 &lt;ul&gt;
