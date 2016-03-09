@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-09T11:08:48.586Z</updated>
+  <updated>2016-03-09T11:11:47.613Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sj719045032.github.io/2016/03/08/ali-interview/"/>
     <id>http://sj719045032.github.io/2016/03/08/ali-interview/</id>
     <published>2016-03-08T03:58:08.000Z</published>
-    <updated>2016-03-09T11:08:48.586Z</updated>
+    <updated>2016-03-09T11:11:47.613Z</updated>
     
     <content type="html">&lt;p&gt;　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
 &lt;ol&gt;
@@ -133,10 +133,12 @@ function myFunc() {
 myFunc();//输出为‘water’
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;作为构造函数调用&lt;br&gt; 作为构造函数，this指向生成的对象。&lt;/p&gt;
-&lt;p&gt;   function Stone() {&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;this.name = &amp;quot;stone&amp;quot;;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   }&lt;br&gt;   myStone = new Stone();&lt;br&gt;   console.log(myStone.name);//输入‘stone’&lt;/p&gt;
-&lt;/li&gt;
+&lt;pre&gt;&lt;code&gt;function Stone() {
+         this.name = &amp;quot;stone&amp;quot;;
+}
+myStone = new Stone();
+console.log(myStone.name);//输入‘stone’
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;通过apply/call调用&lt;br&gt; apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;name = &amp;apos;Global&amp;apos;;
 var Stone = {

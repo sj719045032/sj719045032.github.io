@@ -197,10 +197,12 @@ function myFunc() {
 myFunc();//输出为‘water’
 </code></pre></li>
 <li><p>作为构造函数调用<br> 作为构造函数，this指向生成的对象。</p>
-<p>   function Stone() {</p>
-<pre><code>this.name = &quot;stone&quot;;
-</code></pre><p>   }<br>   myStone = new Stone();<br>   console.log(myStone.name);//输入‘stone’</p>
-</li>
+<pre><code>function Stone() {
+         this.name = &quot;stone&quot;;
+}
+myStone = new Stone();
+console.log(myStone.name);//输入‘stone’
+</code></pre></li>
 <li><p>通过apply/call调用<br> apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
 <pre><code>name = &apos;Global&apos;;
 var Stone = {

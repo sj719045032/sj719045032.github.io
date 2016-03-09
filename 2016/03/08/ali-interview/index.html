@@ -17,7 +17,7 @@ angular数据双向绑定的原理，以及与检测对象改变的实现双向�
 
 angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同
 　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://s">
-<meta property="og:updated_time" content="2016-03-09T11:08:48.586Z">
+<meta property="og:updated_time" content="2016-03-09T11:11:47.613Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2016阿里实习生第一次电话面试总结">
 <meta name="twitter:description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
@@ -205,10 +205,12 @@ function myFunc() {
 myFunc();//输出为‘water’
 </code></pre></li>
 <li><p>作为构造函数调用<br> 作为构造函数，this指向生成的对象。</p>
-<p>   function Stone() {</p>
-<pre><code>this.name = &quot;stone&quot;;
-</code></pre><p>   }<br>   myStone = new Stone();<br>   console.log(myStone.name);//输入‘stone’</p>
-</li>
+<pre><code>function Stone() {
+         this.name = &quot;stone&quot;;
+}
+myStone = new Stone();
+console.log(myStone.name);//输入‘stone’
+</code></pre></li>
 <li><p>通过apply/call调用<br> apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
 <pre><code>name = &apos;Global&apos;;
 var Stone = {
