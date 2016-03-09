@@ -87,12 +87,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。</p>
-<ol>
-<li><p>angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同</p>
-<p>　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细<a href="http://sentsin.com/web/779.html" target="_blank" rel="external">http://sentsin.com/web/779.html</a>.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。</p>
-</li>
-<li><p>angular依赖注入</p>
-<p>在angular有下面三种方式:</p>
+<h3 id="1-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同"><a href="#1-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同" class="headerlink" title="1.angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同"></a>1.angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同</h3><p>   当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细<a href="http://sentsin.com/web/779.html" target="_blank" rel="external">http://sentsin.com/web/779.html</a>.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。</p>
+<h3 id="2-angular依赖注入"><a href="#2-angular依赖注入" class="headerlink" title="2.angular依赖注入"></a>2.angular依赖注入</h3><p>   在angular有下面三种方式:</p>
 <ul>
 <li><p>通过数组标注在方法的参数中声明依赖（优先考虑）</p>
 </li>
@@ -101,38 +97,26 @@
 <li><p>通过方法参数名隐式的添加(有些注意事项)</p>
 </li>
 </ul>
+<ol>
+<li><p>数组标注</p>
+<p>  myModule.controller(‘myController’,[‘$scope’,’myService’,function($scope,myService){<br>  //your code.<br>  }]);</p>
+<p>在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：</p>
+<p>  myModule.controller(‘myController’,[‘$scope’,’myService’,function(myScope,aService){<br>  //your code.<br>  }]);</p>
+<p>这样myScope便对应$scope服务，aService对应myService。</p>
 </li>
 </ol>
-<ul>
-<li><p>数组标注</p>
-<pre><code>myModule.controller(&apos;myController&apos;,[&apos;$scope&apos;,&apos;myService&apos;,function($scope,myService){
-//your code.            
-}]);
-</code></pre><p>在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：</p>
-<pre><code>myModule.controller(&apos;myController&apos;,[&apos;$scope&apos;,&apos;myService&apos;,function(myScope,aService){
-//your code.            
-}]);
-</code></pre><p>这样myScope便对应$scope服务，aService对应myService。</p>
-</li>
-</ul>
-<ul>
+<ol>
 <li><p>$inject属性</p>
-<pre><code>var myController=function($scope,myService){
-//your code.            
-}];
-myController.$inject=[&apos;$scope&apos;,&apos;myService&apos;];
-myModule.controller(&apos;myController&apos;,myController);
-</code></pre></li>
+<p>  var myController=function($scope,myService){<br>  //your code.<br>  }];<br>   myController.$inject=[‘$scope’,’myService’];<br>   myModule.controller(‘myController’,myController);</p>
+</li>
 <li><p>隐式声明依赖</p>
-<pre><code>myModule.controller(&apos;myController&apos;,function($scope,myService){
-       //your code.            
-       });
+<p>   myModule.controller(‘myController’,function($scope,myService){</p>
+<pre><code>//your code.            
+});
 </code></pre><p>将构造函数的参数设为需要依赖的服务名，这样注入器就会自动查找需要依赖的服务</p>
 </li>
-</ul>
-<ol>
-<li><p>闭包及其优缺点</p>
-<p>闭包定义：javascript允许使用内部函数，内部函数可以访问它们所在的外部函数中声明的所有局部变量、参数和声明的其他内部函数。当其中一个这样的内部函数在包含它们的外部函数之外被调用时，就会形成闭包。</p>
+</ol>
+<h3 id="3-闭包及其优缺点"><a href="#3-闭包及其优缺点" class="headerlink" title="3.闭包及其优缺点"></a>3.闭包及其优缺点</h3><p>   闭包定义：javascript允许使用内部函数，内部函数可以访问它们所在的外部函数中声明的所有局部变量、参数和声明的其他内部函数。当其中一个这样的内部函数在包含它们的外部函数之外被调用时，就会形成闭包。</p>
 <ul>
 <li>优点：<ul>
 <li>不增加额外的全局变量。</li>
@@ -146,9 +130,7 @@ myModule.controller(&apos;myController&apos;,myController);
 </ul>
 </li>
 </ul>
-</li>
-<li><p>ajax优缺点</p>
-<p>ajax：AJAX全称为“Asynchronous JavaScript and XML”（异步JavaScript和XML），是一种创建交互式网页应用的网页开发技术。它使用：</p>
+<h3 id="4-ajax优缺点"><a href="#4-ajax优缺点" class="headerlink" title="4.ajax优缺点"></a>4.ajax优缺点</h3><p>   ajax：AJAX全称为“Asynchronous JavaScript and XML”（异步JavaScript和XML），是一种创建交互式网页应用的网页开发技术。它使用：</p>
 <ul>
 <li>使用XHTML+CSS来标准化呈现；</li>
 <li>使用XML和XSLT进行数据交换及相关操作；</li>
@@ -175,35 +157,25 @@ myModule.controller(&apos;myController&apos;,myController);
 </ul>
 </li>
 </ul>
-</li>
-<li><p>javascript中的this理解</p>
-<p>this是Javascript语言的一个关键字它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。</p>
-<ul>
+<h3 id="5-javascript中的this理解"><a href="#5-javascript中的this理解" class="headerlink" title="5.javascript中的this理解"></a>5.javascript中的this理解</h3><p>   this是Javascript语言的一个关键字它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。</p>
+<ol>
 <li><p>作为对象方法调用<br>如果函数作为某个对象的方法调用，那么this绑定到这个对象上。</p>
-<pre><code>function myFunc() {
-   console.log(this.x);
-}
-var myObject = {};
-myObject.x = &quot;stone&quot;;
-myObject.myFunc = myFunc;
-myObject.myFunc();//输入为‘stone’
-</code></pre></li>
-<li><p>作为函数调用<br> 如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。</p>
-<pre><code>var x = &apos;stone&apos;;
-function myFunc() {
-         this.x = &quot;water&quot;;
-         console.log(this.x);
-}
-myFunc();//输出为‘water’
-</code></pre></li>
-<li><p>作为构造函数调用<br> 作为构造函数，this指向生成的对象。</p>
-<pre><code>function Stone() {
-         this.name = &quot;stone&quot;;
-}
-myStone = new Stone();
-console.log(myStone.name);//输入‘stone’
-</code></pre></li>
-<li><p>通过apply/call调用<br> apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
+<p>   function myFunc() {</p>
+<pre><code>console.log(this.x);
+</code></pre><p>   }<br>   var myObject = {};<br>   myObject.x = “stone”;<br>   myObject.myFunc = myFunc;<br>   myObject.myFunc();//输入为‘stone’</p>
+</li>
+<li><p>作为函数调用<br>如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。</p>
+<p>   var x = ‘stone’;<br>   function myFunc() {</p>
+<pre><code>this.x = &quot;water&quot;;
+console.log(this.x);
+</code></pre><p>   }<br>   myFunc();//输出为‘water’</p>
+</li>
+<li><p>作为构造函数调用<br>作为构造函数，this指向生成的对象。</p>
+<p>   function Stone() {</p>
+<pre><code>this.name = &quot;stone&quot;;
+</code></pre><p>   }<br>   myStone = new Stone();<br>   console.log(myStone.name);//输入‘stone’</p>
+</li>
+<li><p>通过apply/call调用<br>apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
 <pre><code>name = &apos;Global&apos;;
 var Stone = {
   name: &apos;Stone&apos;
@@ -214,35 +186,32 @@ function showName() {
 showName.apply();//输入为‘Global’,未改变this指向
 showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象
 </code></pre></li>
-<li><p>自执行函数<br> 自行函数this指向全局对象，浏览器中是window</p>
-<pre><code>name=&apos;Global&apos;;
-var Stone={
-   name:&apos;stone&apos;,
-   showName:function(){
-       console.log(this.name);
-       (function(){
-           console.log(this.name);
-       })();
-   }
-};
-Stone.showName();//输出stone Global
-</code></pre></li>
-</ul>
+<li><p>自执行函数<br>自行函数this指向全局对象，浏览器中是window</p>
+<p>   name=’Global’;<br>   var Stone={</p>
+<pre><code>name:&apos;stone&apos;,
+showName:function(){
+    console.log(this.name);
+    (function(){
+        console.log(this.name);
+    })();
+}
+</code></pre><p>   };<br>   Stone.showName();//输出stone Global</p>
 </li>
-<li><p>js事件代理（委托）</p>
-<p>事件阶段：事件捕获-&gt;目标-&gt;事件冒泡</p>
-<ul>
-<li>事件捕获阶段<br>   事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是遍历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。在实际应用中，我们并没有太多使用捕获阶段监听的用例，但是通过在捕获阶段对事件的处理，我们可以阻止类似click事件在某个特定元素上被触发。</li>
-<li>目标阶段<br>   当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，知道传播到最外层的文档节点。</li>
-<li>冒泡阶段<br>   事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。 </li>
-</ul>
+</ol>
+<h3 id="6-js事件代理（委托）"><a href="#6-js事件代理（委托）" class="headerlink" title="6.js事件代理（委托）"></a>6.js事件代理（委托）</h3><p>  事件阶段：事件捕获-&gt;目标-&gt;事件冒泡</p>
+<ol>
+<li><p>事件捕获阶段</p>
+<p> 事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是遍历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。在实际应用中，我们并没有太多使用捕获阶段监听的用例，但是通过在捕获阶段对事件的处理，我们可以阻止类似click事件在某个特定元素上被触发。</p>
+</li>
+<li><p>目标阶段</p>
+<p> 当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，知道传播到最外层的文档节点。</p>
+</li>
+<li><p>冒泡阶段</p>
+<p> 事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。 </p>
 <p>事件代理：把事件处理器添加到一个父级元素上。默认情况下，由于事件在目标元素上面触发后，还会一次冒泡到DOM树最上层，所以事件代理得以实现。这样我们可以在上层元素通过判断事件的目标，来对目标元素采取相应的操作。</p>
 </li>
 </ol>
-<ol>
-<li>position几种属性</li>
-</ol>
-<table>
+<h3 id="7-position几种属性"><a href="#7-position几种属性" class="headerlink" title="7.position几种属性"></a>7.position几种属性</h3><table>
 <thead>
 <tr>
 <th>值</th>
@@ -272,19 +241,15 @@ Stone.showName();//输出stone Global
 </tr>
 </tbody>
 </table>
-<ol>
-<li><p>display属性</p>
-<ul>
-<li><p>inline</p>
-<p>行内元素</p>
+<h3 id="8-display属性"><a href="#8-display属性" class="headerlink" title="8.display属性"></a>8.display属性</h3><ul>
+<li><p>inline(行内元素)</p>
 <ul>
 <li>和其他元素都在一行上</li>
 <li>元素的高度、宽度、行高及顶部和底部边距不可设置</li>
 <li>元素的宽度就是它包含的文字或图片的宽度，不可改变</li>
 </ul>
 </li>
-<li><p>block </p>
-<p>块元素</p>
+<li><p>block(块元素)</p>
 <ul>
 <li>每个块级元素都从新的一行开始，并且其后的元素也另起一行</li>
 <li>元素的高度、宽度、行高以及顶和底边距都可设置</li>
@@ -295,9 +260,7 @@ Stone.showName();//输出stone Global
 <p>inline-block既具有block的宽高特性又具有inline的同行元素特性。</p>
 </li>
 </ul>
-</li>
-<li><p>BFC(Block formatting context)块级格式化上下文</p>
-<p>它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
+<h3 id="9-BFC-Block-formatting-context-块级格式化上下文"><a href="#9-BFC-Block-formatting-context-块级格式化上下文" class="headerlink" title="9.BFC(Block formatting context)块级格式化上下文"></a>9.BFC(Block formatting context)块级格式化上下文</h3><p>   它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。</p>
 <ul>
 <li><p>BFC布局规则：</p>
 <ul>
@@ -319,12 +282,7 @@ Stone.showName();//输出stone Global
 </ul>
 </li>
 </ul>
-</li>
-</ol>
-<ol>
-<li>OSI七层模型</li>
-</ol>
-<table>
+<h3 id="10-OSI七层模型"><a href="#10-OSI七层模型" class="headerlink" title="10.OSI七层模型"></a>10.OSI七层模型</h3><table>
 <thead>
 <tr>
 <th>OSI层</th>
@@ -370,10 +328,8 @@ Stone.showName();//输出stone Global
 </tr>
 </tbody>
 </table>
+<h3 id="11-http"><a href="#11-http" class="headerlink" title="11 http"></a>11 http</h3><p>   HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写</p>
 <ol>
-<li><p>http</p>
-<p>HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写</p>
-<ul>
 <li><p>工作流程</p>
 <ul>
 <li>首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始</li>
@@ -383,8 +339,6 @@ Stone.showName();//输出stone Global
 </ul>
 </li>
 <li><p>常用状态吗</p>
-</li>
-</ul>
 </li>
 </ol>
 <table>

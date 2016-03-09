@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-09T11:12:44.169Z</updated>
+  <updated>2016-03-09T11:29:35.762Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -20,15 +20,11 @@
     <link href="http://sj719045032.github.io/2016/03/08/ali-interview/"/>
     <id>http://sj719045032.github.io/2016/03/08/ali-interview/</id>
     <published>2016-03-08T03:58:08.000Z</published>
-    <updated>2016-03-09T11:12:44.169Z</updated>
+    <updated>2016-03-09T11:29:35.762Z</updated>
     
     <content type="html">&lt;p&gt;　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&lt;/p&gt;
-&lt;p&gt;　　由于我简历里面写了我用angular做过项目，第一个问题就是针对angular的可以说是非常重要的双向绑定机制的机制，当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细&lt;a href=&quot;http://sentsin.com/web/779.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sentsin.com/web/779.html&lt;/a&gt;.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;angular依赖注入&lt;/p&gt;
-&lt;p&gt;在angular有下面三种方式:&lt;/p&gt;
+&lt;h3 id=&quot;1-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&quot;&gt;&lt;a href=&quot;#1-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&quot; class=&quot;headerlink&quot; title=&quot;1.angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&quot;&gt;&lt;/a&gt;1.angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&lt;/h3&gt;&lt;p&gt;   当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细&lt;a href=&quot;http://sentsin.com/web/779.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sentsin.com/web/779.html&lt;/a&gt;.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。&lt;/p&gt;
+&lt;h3 id=&quot;2-angular依赖注入&quot;&gt;&lt;a href=&quot;#2-angular依赖注入&quot; class=&quot;headerlink&quot; title=&quot;2.angular依赖注入&quot;&gt;&lt;/a&gt;2.angular依赖注入&lt;/h3&gt;&lt;p&gt;   在angular有下面三种方式:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;通过数组标注在方法的参数中声明依赖（优先考虑）&lt;/p&gt;
 &lt;/li&gt;
@@ -37,38 +33,26 @@
 &lt;li&gt;&lt;p&gt;通过方法参数名隐式的添加(有些注意事项)&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;数组标注&lt;/p&gt;
+&lt;p&gt;  myModule.controller(‘myController’,[‘$scope’,’myService’,function($scope,myService){&lt;br&gt;  //your code.&lt;br&gt;  }]);&lt;/p&gt;
+&lt;p&gt;在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：&lt;/p&gt;
+&lt;p&gt;  myModule.controller(‘myController’,[‘$scope’,’myService’,function(myScope,aService){&lt;br&gt;  //your code.&lt;br&gt;  }]);&lt;/p&gt;
+&lt;p&gt;这样myScope便对应$scope服务，aService对应myService。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;数组标注&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;myModule.controller(&amp;apos;myController&amp;apos;,[&amp;apos;$scope&amp;apos;,&amp;apos;myService&amp;apos;,function($scope,myService){
-//your code.            
-}]);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;myModule.controller(&amp;apos;myController&amp;apos;,[&amp;apos;$scope&amp;apos;,&amp;apos;myService&amp;apos;,function(myScope,aService){
-//your code.            
-}]);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样myScope便对应$scope服务，aService对应myService。&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;ul&gt;
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;$inject属性&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var myController=function($scope,myService){
-//your code.            
-}];
-myController.$inject=[&amp;apos;$scope&amp;apos;,&amp;apos;myService&amp;apos;];
-myModule.controller(&amp;apos;myController&amp;apos;,myController);
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;p&gt;  var myController=function($scope,myService){&lt;br&gt;  //your code.&lt;br&gt;  }];&lt;br&gt;   myController.$inject=[‘$scope’,’myService’];&lt;br&gt;   myModule.controller(‘myController’,myController);&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;隐式声明依赖&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;myModule.controller(&amp;apos;myController&amp;apos;,function($scope,myService){
-       //your code.            
-       });
+&lt;p&gt;   myModule.controller(‘myController’,function($scope,myService){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//your code.            
+});
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;将构造函数的参数设为需要依赖的服务名，这样注入器就会自动查找需要依赖的服务&lt;/p&gt;
 &lt;/li&gt;
-&lt;/ul&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;闭包及其优缺点&lt;/p&gt;
-&lt;p&gt;闭包定义：javascript允许使用内部函数，内部函数可以访问它们所在的外部函数中声明的所有局部变量、参数和声明的其他内部函数。当其中一个这样的内部函数在包含它们的外部函数之外被调用时，就会形成闭包。&lt;/p&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;3-闭包及其优缺点&quot;&gt;&lt;a href=&quot;#3-闭包及其优缺点&quot; class=&quot;headerlink&quot; title=&quot;3.闭包及其优缺点&quot;&gt;&lt;/a&gt;3.闭包及其优缺点&lt;/h3&gt;&lt;p&gt;   闭包定义：javascript允许使用内部函数，内部函数可以访问它们所在的外部函数中声明的所有局部变量、参数和声明的其他内部函数。当其中一个这样的内部函数在包含它们的外部函数之外被调用时，就会形成闭包。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;优点：&lt;ul&gt;
 &lt;li&gt;不增加额外的全局变量。&lt;/li&gt;
@@ -82,9 +66,7 @@ myModule.controller(&amp;apos;myController&amp;apos;,myController);
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;ajax优缺点&lt;/p&gt;
-&lt;p&gt;ajax：AJAX全称为“Asynchronous JavaScript and XML”（异步JavaScript和XML），是一种创建交互式网页应用的网页开发技术。它使用：&lt;/p&gt;
+&lt;h3 id=&quot;4-ajax优缺点&quot;&gt;&lt;a href=&quot;#4-ajax优缺点&quot; class=&quot;headerlink&quot; title=&quot;4.ajax优缺点&quot;&gt;&lt;/a&gt;4.ajax优缺点&lt;/h3&gt;&lt;p&gt;   ajax：AJAX全称为“Asynchronous JavaScript and XML”（异步JavaScript和XML），是一种创建交互式网页应用的网页开发技术。它使用：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;使用XHTML+CSS来标准化呈现；&lt;/li&gt;
 &lt;li&gt;使用XML和XSLT进行数据交换及相关操作；&lt;/li&gt;
@@ -111,35 +93,25 @@ myModule.controller(&amp;apos;myController&amp;apos;,myController);
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;javascript中的this理解&lt;/p&gt;
-&lt;p&gt;this是Javascript语言的一个关键字它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。&lt;/p&gt;
-&lt;ul&gt;
+&lt;h3 id=&quot;5-javascript中的this理解&quot;&gt;&lt;a href=&quot;#5-javascript中的this理解&quot; class=&quot;headerlink&quot; title=&quot;5.javascript中的this理解&quot;&gt;&lt;/a&gt;5.javascript中的this理解&lt;/h3&gt;&lt;p&gt;   this是Javascript语言的一个关键字它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。&lt;/p&gt;
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;作为对象方法调用&lt;br&gt;如果函数作为某个对象的方法调用，那么this绑定到这个对象上。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function myFunc() {
-   console.log(this.x);
-}
-var myObject = {};
-myObject.x = &amp;quot;stone&amp;quot;;
-myObject.myFunc = myFunc;
-myObject.myFunc();//输入为‘stone’
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;作为函数调用&lt;br&gt; 如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var x = &amp;apos;stone&amp;apos;;
-function myFunc() {
-         this.x = &amp;quot;water&amp;quot;;
-         console.log(this.x);
-}
-myFunc();//输出为‘water’
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;作为构造函数调用&lt;br&gt; 作为构造函数，this指向生成的对象。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function Stone() {
-         this.name = &amp;quot;stone&amp;quot;;
-}
-myStone = new Stone();
-console.log(myStone.name);//输入‘stone’
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通过apply/call调用&lt;br&gt; apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象&lt;/p&gt;
+&lt;p&gt;   function myFunc() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(this.x);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   }&lt;br&gt;   var myObject = {};&lt;br&gt;   myObject.x = “stone”;&lt;br&gt;   myObject.myFunc = myFunc;&lt;br&gt;   myObject.myFunc();//输入为‘stone’&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;作为函数调用&lt;br&gt;如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。&lt;/p&gt;
+&lt;p&gt;   var x = ‘stone’;&lt;br&gt;   function myFunc() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.x = &amp;quot;water&amp;quot;;
+console.log(this.x);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   }&lt;br&gt;   myFunc();//输出为‘water’&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;作为构造函数调用&lt;br&gt;作为构造函数，this指向生成的对象。&lt;/p&gt;
+&lt;p&gt;   function Stone() {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;this.name = &amp;quot;stone&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   }&lt;br&gt;   myStone = new Stone();&lt;br&gt;   console.log(myStone.name);//输入‘stone’&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;通过apply/call调用&lt;br&gt;apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;name = &amp;apos;Global&amp;apos;;
 var Stone = {
   name: &amp;apos;Stone&amp;apos;
@@ -150,35 +122,32 @@ function showName() {
 showName.apply();//输入为‘Global’,未改变this指向
 showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;自执行函数&lt;br&gt; 自行函数this指向全局对象，浏览器中是window&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;name=&amp;apos;Global&amp;apos;;
-var Stone={
-   name:&amp;apos;stone&amp;apos;,
-   showName:function(){
-       console.log(this.name);
-       (function(){
-           console.log(this.name);
-       })();
-   }
-};
-Stone.showName();//输出stone Global
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
+&lt;li&gt;&lt;p&gt;自执行函数&lt;br&gt;自行函数this指向全局对象，浏览器中是window&lt;/p&gt;
+&lt;p&gt;   name=’Global’;&lt;br&gt;   var Stone={&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name:&amp;apos;stone&amp;apos;,
+showName:function(){
+    console.log(this.name);
+    (function(){
+        console.log(this.name);
+    })();
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   };&lt;br&gt;   Stone.showName();//输出stone Global&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;js事件代理（委托）&lt;/p&gt;
-&lt;p&gt;事件阶段：事件捕获-&amp;gt;目标-&amp;gt;事件冒泡&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;事件捕获阶段&lt;br&gt;   事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是遍历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。在实际应用中，我们并没有太多使用捕获阶段监听的用例，但是通过在捕获阶段对事件的处理，我们可以阻止类似click事件在某个特定元素上被触发。&lt;/li&gt;
-&lt;li&gt;目标阶段&lt;br&gt;   当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，知道传播到最外层的文档节点。&lt;/li&gt;
-&lt;li&gt;冒泡阶段&lt;br&gt;   事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。 &lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;6-js事件代理（委托）&quot;&gt;&lt;a href=&quot;#6-js事件代理（委托）&quot; class=&quot;headerlink&quot; title=&quot;6.js事件代理（委托）&quot;&gt;&lt;/a&gt;6.js事件代理（委托）&lt;/h3&gt;&lt;p&gt;  事件阶段：事件捕获-&amp;gt;目标-&amp;gt;事件冒泡&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;事件捕获阶段&lt;/p&gt;
+&lt;p&gt; 事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是遍历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。在实际应用中，我们并没有太多使用捕获阶段监听的用例，但是通过在捕获阶段对事件的处理，我们可以阻止类似click事件在某个特定元素上被触发。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;目标阶段&lt;/p&gt;
+&lt;p&gt; 当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，知道传播到最外层的文档节点。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;冒泡阶段&lt;/p&gt;
+&lt;p&gt; 事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。 &lt;/p&gt;
 &lt;p&gt;事件代理：把事件处理器添加到一个父级元素上。默认情况下，由于事件在目标元素上面触发后，还会一次冒泡到DOM树最上层，所以事件代理得以实现。这样我们可以在上层元素通过判断事件的目标，来对目标元素采取相应的操作。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;position几种属性&lt;/li&gt;
-&lt;/ol&gt;
-&lt;table&gt;
+&lt;h3 id=&quot;7-position几种属性&quot;&gt;&lt;a href=&quot;#7-position几种属性&quot; class=&quot;headerlink&quot; title=&quot;7.position几种属性&quot;&gt;&lt;/a&gt;7.position几种属性&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;值&lt;/th&gt;
@@ -208,19 +177,15 @@ Stone.showName();//输出stone Global
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;display属性&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;inline&lt;/p&gt;
-&lt;p&gt;行内元素&lt;/p&gt;
+&lt;h3 id=&quot;8-display属性&quot;&gt;&lt;a href=&quot;#8-display属性&quot; class=&quot;headerlink&quot; title=&quot;8.display属性&quot;&gt;&lt;/a&gt;8.display属性&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;inline(行内元素)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;和其他元素都在一行上&lt;/li&gt;
 &lt;li&gt;元素的高度、宽度、行高及顶部和底部边距不可设置&lt;/li&gt;
 &lt;li&gt;元素的宽度就是它包含的文字或图片的宽度，不可改变&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;block &lt;/p&gt;
-&lt;p&gt;块元素&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;block(块元素)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;每个块级元素都从新的一行开始，并且其后的元素也另起一行&lt;/li&gt;
 &lt;li&gt;元素的高度、宽度、行高以及顶和底边距都可设置&lt;/li&gt;
@@ -231,9 +196,7 @@ Stone.showName();//输出stone Global
 &lt;p&gt;inline-block既具有block的宽高特性又具有inline的同行元素特性。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;BFC(Block formatting context)块级格式化上下文&lt;/p&gt;
-&lt;p&gt;它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。&lt;/p&gt;
+&lt;h3 id=&quot;9-BFC-Block-formatting-context-块级格式化上下文&quot;&gt;&lt;a href=&quot;#9-BFC-Block-formatting-context-块级格式化上下文&quot; class=&quot;headerlink&quot; title=&quot;9.BFC(Block formatting context)块级格式化上下文&quot;&gt;&lt;/a&gt;9.BFC(Block formatting context)块级格式化上下文&lt;/h3&gt;&lt;p&gt;   它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;BFC布局规则：&lt;/p&gt;
 &lt;ul&gt;
@@ -255,12 +218,7 @@ Stone.showName();//输出stone Global
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;ol&gt;
-&lt;li&gt;OSI七层模型&lt;/li&gt;
-&lt;/ol&gt;
-&lt;table&gt;
+&lt;h3 id=&quot;10-OSI七层模型&quot;&gt;&lt;a href=&quot;#10-OSI七层模型&quot; class=&quot;headerlink&quot; title=&quot;10.OSI七层模型&quot;&gt;&lt;/a&gt;10.OSI七层模型&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
 &lt;th&gt;OSI层&lt;/th&gt;
@@ -306,10 +264,8 @@ Stone.showName();//输出stone Global
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;h3 id=&quot;11-http&quot;&gt;&lt;a href=&quot;#11-http&quot; class=&quot;headerlink&quot; title=&quot;11 http&quot;&gt;&lt;/a&gt;11 http&lt;/h3&gt;&lt;p&gt;   HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;http&lt;/p&gt;
-&lt;p&gt;HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写&lt;/p&gt;
-&lt;ul&gt;
 &lt;li&gt;&lt;p&gt;工作流程&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始&lt;/li&gt;
@@ -319,8 +275,6 @@ Stone.showName();//输出stone Global
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;常用状态吗&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;table&gt;
@@ -362,9 +316,7 @@ Stone.showName();//输出stone Global
     <summary type="html">
     
       &lt;p&gt;　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;p&gt;angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&lt;/p&gt;
-&lt;p&gt;　　由于我简历里面写了我用
+&lt;h3 id=&quot;1-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&quot;&gt;&lt;a href=&quot;#1-angular数据
     
     </summary>
     
