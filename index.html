@@ -99,20 +99,28 @@
 </ul>
 <ol>
 <li><p>数组标注</p>
-<p>  myModule.controller(‘myController’,[‘$scope’,’myService’,function($scope,myService){<br>  //your code.<br>  }]);</p>
-<p>在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：</p>
-<p>  myModule.controller(‘myController’,[‘$scope’,’myService’,function(myScope,aService){<br>  //your code.<br>  }]);</p>
-<p>这样myScope便对应$scope服务，aService对应myService。</p>
+<pre><code>myModule.controller(&apos;myController&apos;,[&apos;$scope&apos;,&apos;myService&apos;,function($scope,myService){
+//your code.            
+}]);
+</code></pre><p>在第二个数组类型的参数中声明了两个依赖$scope,myService.后面的function中的参数$scope,myService与前面生命的依赖一一对应，可以改成符合js命名规范的任意标示符，比如：</p>
+<pre><code>myModule.controller(&apos;myController&apos;,[&apos;$scope&apos;,&apos;myService&apos;,function(myScope,aService){
+//your code.            
+}]);
+</code></pre><p>这样myScope便对应$scope服务，aService对应myService。</p>
 </li>
 </ol>
 <ol>
 <li><p>$inject属性</p>
-<p>  var myController=function($scope,myService){<br>  //your code.<br>  }];<br>   myController.$inject=[‘$scope’,’myService’];<br>   myModule.controller(‘myController’,myController);</p>
-</li>
+<pre><code>var myController=function($scope,myService){
+//your code.            
+}];
+ myController.$inject=[&apos;$scope&apos;,&apos;myService&apos;];
+ myModule.controller(&apos;myController&apos;,myController);
+</code></pre></li>
 <li><p>隐式声明依赖</p>
-<p>   myModule.controller(‘myController’,function($scope,myService){</p>
-<pre><code>//your code.            
-});
+<pre><code>myModule.controller(&apos;myController&apos;,function($scope,myService){
+       //your code.            
+       });
 </code></pre><p>将构造函数的参数设为需要依赖的服务名，这样注入器就会自动查找需要依赖的服务</p>
 </li>
 </ol>
@@ -177,16 +185,12 @@ console.log(this.x);
 </code></pre><p>   }<br>   myStone = new Stone();<br>   console.log(myStone.name);//输入‘stone’</p>
 </li>
 <li><p>通过apply/call调用<br>apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
-<pre><code>name = &apos;Global&apos;;
-var Stone = {
-  name: &apos;Stone&apos;
-};
-function showName() {
-  console.log(this.name);
-}
-showName.apply();//输入为‘Global’,未改变this指向
-showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象
-</code></pre></li>
+<p>   name = ‘Global’;<br>   var Stone = {</p>
+<pre><code>name: &apos;Stone&apos;
+</code></pre><p>   };<br>   function showName() {</p>
+<pre><code>console.log(this.name);
+</code></pre><p>   }<br>   showName.apply();//输入为‘Global’,未改变this指向<br>   showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象</p>
+</li>
 <li><p>自执行函数<br>自行函数this指向全局对象，浏览器中是window</p>
 <p>   name=’Global’;<br>   var Stone={</p>
 <pre><code>name:&apos;stone&apos;,
