@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-09T10:54:01.949Z</updated>
+  <updated>2016-03-09T10:59:54.801Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://sj719045032.github.io/2016/03/08/ali-interview/"/>
     <id>http://sj719045032.github.io/2016/03/08/ali-interview/</id>
     <published>2016-03-08T03:58:08.000Z</published>
-    <updated>2016-03-09T10:54:01.949Z</updated>
+    <updated>2016-03-09T10:59:54.801Z</updated>
     
     <content type="html">&lt;p&gt;　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
 &lt;ol&gt;
@@ -130,29 +130,35 @@ function myFunc() {
 }
 myFunc();//输出为‘water’
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;作为构造函数调用&lt;br&gt;   作为构造函数，this指向生成的对象。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;作为构造函数调用&lt;br&gt; 作为构造函数，this指向生成的对象。&lt;/p&gt;
 &lt;p&gt;   function Stone() {&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;this.name = &amp;quot;stone&amp;quot;;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   }&lt;br&gt;   myStone = new Stone();&lt;br&gt;   console.log(myStone.name);//输入‘stone’&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;通过apply/call调用&lt;br&gt;  apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象&lt;/p&gt;
-&lt;p&gt;   name = ‘Global’;&lt;br&gt;   var Stone = {&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;name: &amp;apos;Stone&amp;apos;
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   };&lt;br&gt;   function showName() {&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;console.log(this.name);
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   }&lt;br&gt;   showName.apply();//输入为‘Global’,未改变this指向&lt;br&gt;   showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;自执行函数&lt;br&gt; 自行函数this指向全局对象，浏览器中是window&lt;/p&gt;
-&lt;p&gt;   name=’Global’;&lt;br&gt;   var Stone={&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;name:&amp;apos;stone&amp;apos;,
-showName:function(){
-    console.log(this.name);
-    (function(){
-        console.log(this.name);
-    })();
+&lt;li&gt;&lt;p&gt;通过apply/call调用&lt;br&gt; apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name = &amp;apos;Global&amp;apos;;
+var Stone = {
+  name: &amp;apos;Stone&amp;apos;
+};
+function showName() {
+  console.log(this.name);
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;   };&lt;br&gt;   Stone.showName();//输出stone Global&lt;/p&gt;
-&lt;/li&gt;
+showName.apply();//输入为‘Global’,未改变this指向
+showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;自执行函数&lt;br&gt; 自行函数this指向全局对象，浏览器中是window&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name=&amp;apos;Global&amp;apos;;
+var Stone={
+   name:&amp;apos;stone&amp;apos;,
+   showName:function(){
+       console.log(this.name);
+       (function(){
+           console.log(this.name);
+       })();
+   }
+};
+Stone.showName();//输出stone Global
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;js事件代理（委托）&lt;/p&gt;
@@ -160,14 +166,45 @@ showName:function(){
 &lt;ul&gt;
 &lt;li&gt;事件捕获阶段&lt;br&gt;   事件的第一个阶段是捕获阶段。事件从文档的根节点出发，随着DOM树的结构向事件的目标节点流去。途中经过各个层次的DOM节点，并在各节点上触发捕获事件，直到到达时间的目标节点。捕获阶段的主要任务是遍历传播路径，在冒泡阶段，时间会通过这个路径回溯到文档根节点。在实际应用中，我们并没有太多使用捕获阶段监听的用例，但是通过在捕获阶段对事件的处理，我们可以阻止类似click事件在某个特定元素上被触发。&lt;/li&gt;
 &lt;li&gt;目标阶段&lt;br&gt;   当事件到达目标节点时，事件就进入了目标阶段。事件在目标节点上被触发，然后逆向回流，知道传播到最外层的文档节点。&lt;/li&gt;
-&lt;li&gt;冒泡阶段&lt;br&gt;   事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。&lt;br&gt;事件代理：把事件处理器添加到一个父级元素上。默认情况下，由于事件在目标元素上面触发后，还会一次冒泡到DOM树最上层，所以事件代理得以实现。这样我们可以在上层元素通过判断事件的目标，来对目标元素采取相应的操作。&lt;/li&gt;
+&lt;li&gt;冒泡阶段&lt;br&gt;   事件在目标事件上触发后，并不在这个元素上终止。它会随着DOM树一层层向上冒泡，直到到达最外层的根节点。也就是说，同一事件会一次在目标节点的父节点，父节点的父节点…直到最外层的节点上触发。 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;事件代理：把事件处理器添加到一个父级元素上。默认情况下，由于事件在目标元素上面触发后，还会一次冒泡到DOM树最上层，所以事件代理得以实现。这样我们可以在上层元素通过判断事件的目标，来对目标元素采取相应的操作。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;position几种属性&lt;/p&gt;
-&lt;p&gt; | 值      | 描述                                                             |&lt;br&gt; | —–   |: ——————————————————-        |&lt;br&gt; |absolute | 生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。     |&lt;br&gt; |fixed    |生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。 |&lt;br&gt; |relative | 生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。|&lt;br&gt; |static   |默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。|&lt;br&gt; |inherit  |规定应该从父元素继承 position 属性的值。|&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;position几种属性&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;值&lt;/th&gt;
+&lt;th&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;absolute&lt;/td&gt;
+&lt;td&gt;生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;fixed&lt;/td&gt;
+&lt;td&gt;生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;relative&lt;/td&gt;
+&lt;td&gt;生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;static&lt;/td&gt;
+&lt;td&gt;默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;inherit&lt;/td&gt;
+&lt;td&gt;规定应该从父元素继承 position 属性的值。&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;display属性&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;inline&lt;/p&gt;
@@ -217,9 +254,55 @@ showName:function(){
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;ol&gt;
-&lt;li&gt;&lt;p&gt;OSI七层模型&lt;/p&gt;
-&lt;p&gt;| OSI层    | 功能 | 协议 |&lt;br&gt;| ——  | ——-| —–|&lt;br&gt;| 应用层   | 文件传输，电子邮件，文件服务，虚拟终端 |TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet|&lt;br&gt;|表示层    |数据格式化，代码转换，数据加密 |没有协议|&lt;br&gt;|会话层    |解除或建立与别的接点的联系 |没有协议|&lt;br&gt;|传输层    |提供端对端的接口 |TCP，UDP |&lt;br&gt;|网络层    |为数据包选择路由 |IP，ICMP，RIP，OSPF，BGP，IGMP|&lt;br&gt;|数据链路层| 传输有地址的帧以及错误检测功能 |SLIP，CSLIP，PPP，ARP，RARP，MTU|&lt;br&gt;|物理层     |以二进制数据形式在物理媒体上传输数据| ISO2110，IEEE802，IEEE802.2 | &lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;OSI七层模型&lt;/li&gt;
+&lt;/ol&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;OSI层&lt;/th&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;协议&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;应用层&lt;/td&gt;
+&lt;td&gt;文件传输，电子邮件，文件服务，虚拟终端&lt;/td&gt;
+&lt;td&gt;TFTP，HTTP，SNMP，FTP，SMTP，DNS，Telnet&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;表示层&lt;/td&gt;
+&lt;td&gt;数据格式化，代码转换，数据加密&lt;/td&gt;
+&lt;td&gt;没有协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;会话层&lt;/td&gt;
+&lt;td&gt;解除或建立与别的接点的联系&lt;/td&gt;
+&lt;td&gt;没有协议&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;传输层&lt;/td&gt;
+&lt;td&gt;提供端对端的接口&lt;/td&gt;
+&lt;td&gt;TCP，UDP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;网络层&lt;/td&gt;
+&lt;td&gt;为数据包选择路由&lt;/td&gt;
+&lt;td&gt;IP，ICMP，RIP，OSPF，BGP，IGMP&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;数据链路层&lt;/td&gt;
+&lt;td&gt;传输有地址的帧以及错误检测功能&lt;/td&gt;
+&lt;td&gt;SLIP，CSLIP，PPP，ARP，RARP，MTU&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;物理层&lt;/td&gt;
+&lt;td&gt;以二进制数据形式在物理媒体上传输数据&lt;/td&gt;
+&lt;td&gt;ISO2110，IEEE802，IEEE802.2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;ol&gt;
 &lt;li&gt;&lt;p&gt;http&lt;/p&gt;
 &lt;p&gt;HTTP是Hyper Text Transfer Protocol（超文本传输协议）的缩写&lt;/p&gt;
 &lt;ul&gt;
@@ -232,9 +315,9 @@ showName:function(){
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;常用状态吗&lt;/p&gt;
+&lt;p&gt;  |     消息        |描述|&lt;br&gt;  | ——-    | ——–|&lt;br&gt;  |200（成功）    |服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。|&lt;br&gt;  |301（永久移动）|    请求的网页已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。您应使用此代码告诉 Googlebot 某个网页或网站已永久移动到新位置。|&lt;br&gt;  |302（临时移动）|    服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来响应以后的请求。此代码与响应 GET 和 HEAD 请求的 301 代码类似，会自动将请求者转到不同的位置，但您不应使用此代码来告诉 Googlebot 某个网页或网站已经移动，因为 Googlebot 会继续抓取原有位置并编制索引。&lt;br&gt;  | 304（未修改）|自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应（称为 If-Modified-Since HTTP 标头）。服务器可以告诉 Googlebot 自从上次抓取后网页没有变更，进而节省带宽和开销。 |&lt;br&gt;  |404（未找到）|服务器找不到请求的网页。例如，对于服务器上不存在的网页经常会返回此代码。|&lt;br&gt;  |503（服务不可用）    |服务器目前无法使用（由于超载或停机维护）。通常，这只是暂时状态。|&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;|     消息        |描述|&lt;br&gt;| ——-    | ——–|&lt;br&gt;|200（成功）    |服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。|&lt;br&gt;|301（永久移动）|    请求的网页已永久移动到新位置。服务器返回此响应（对 GET 或 HEAD 请求的响应）时，会自动将请求者转到新位置。您应使用此代码告诉 Googlebot 某个网页或网站已永久移动到新位置。|&lt;br&gt;|302（临时移动）|    服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来响应以后的请求。此代码与响应 GET 和 HEAD 请求的 301 代码类似，会自动将请求者转到不同的位置，但您不应使用此代码来告诉 Googlebot 某个网页或网站已经移动，因为 Googlebot 会继续抓取原有位置并编制索引。&lt;br&gt;| 304（未修改）|自从上次请求后，请求的网页未修改过。服务器返回此响应时，不会返回网页内容。如果网页自请求者上次请求后再也没有更改过，您应将服务器配置为返回此响应（称为 If-Modified-Since HTTP 标头）。服务器可以告诉 Googlebot 自从上次抓取后网页没有变更，进而节省带宽和开销。 |&lt;br&gt;|404（未找到）|服务器找不到请求的网页。例如，对于服务器上不存在的网页经常会返回此代码。|&lt;br&gt;|503（服务不可用）    |服务器目前无法使用（由于超载或停机维护）。通常，这只是暂时状态。|&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 </content>
