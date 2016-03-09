@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Stone's blog!">
 <meta property="og:description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
 1.angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同   当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细http://sentsin.com/web/779.html.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的">
-<meta property="og:updated_time" content="2016-03-09T11:41:02.970Z">
+<meta property="og:updated_time" content="2016-03-09T11:42:38.443Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2016阿里实习生第一次电话面试总结">
 <meta name="twitter:description" content="2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。
@@ -170,40 +170,54 @@
 </ul>
 <h3 id="5-javascript中的this理解"><a href="#5-javascript中的this理解" class="headerlink" title="5.javascript中的this理解"></a>5.javascript中的this理解</h3><p>   this是Javascript语言的一个关键字它代表函数运行时，自动生成的一个内部对象，只能在函数内部使用，随着函数使用场合的不同，this的值会发生变化。但是有一个总的原则，那就是this指的是，调用函数的那个对象。</p>
 <ol>
-<li><p>作为对象方法调用<br>如果函数作为某个对象的方法调用，那么this绑定到这个对象上。</p>
-<p>   function myFunc() {</p>
-<pre><code>console.log(this.x);
-</code></pre><p>   }<br>   var myObject = {};<br>   myObject.x = “stone”;<br>   myObject.myFunc = myFunc;<br>   myObject.myFunc();//输入为‘stone’</p>
-</li>
-<li><p>作为函数调用<br>如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。</p>
-<p>   var x = ‘stone’;<br>   function myFunc() {</p>
-<pre><code>this.x = &quot;water&quot;;
-console.log(this.x);
-</code></pre><p>   }<br>   myFunc();//输出为‘water’</p>
-</li>
-<li><p>作为构造函数调用<br>作为构造函数，this指向生成的对象。</p>
-<p>   function Stone() {</p>
-<pre><code>this.name = &quot;stone&quot;;
-</code></pre><p>   }<br>   myStone = new Stone();<br>   console.log(myStone.name);//输入‘stone’</p>
-</li>
-<li><p>通过apply/call调用<br>apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
-<p>   name = ‘Global’;<br>   var Stone = {</p>
-<pre><code>name: &apos;Stone&apos;
-</code></pre><p>   };<br>   function showName() {</p>
-<pre><code>console.log(this.name);
-</code></pre><p>   }<br>   showName.apply();//输入为‘Global’,未改变this指向<br>   showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象</p>
-</li>
-<li><p>自执行函数<br>自行函数this指向全局对象，浏览器中是window</p>
-<p>   name=’Global’;<br>   var Stone={</p>
-<pre><code>name:&apos;stone&apos;,
-showName:function(){
-    console.log(this.name);
-    (function(){
-        console.log(this.name);
-    })();
+<li><p>作为对象方法调用<br> 如果函数作为某个对象的方法调用，那么this绑定到这个对象上。</p>
+<pre><code>function myFunc() {
+   console.log(this.x);
 }
-</code></pre><p>   };<br>   Stone.showName();//输出stone Global</p>
-</li>
+var myObject = {};
+myObject.x = &quot;stone&quot;;
+myObject.myFunc = myFunc;
+myObject.myFunc();//输入为‘stone’
+</code></pre></li>
+<li><p>作为函数调用<br>  如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。</p>
+<pre><code>var x = &apos;stone&apos;;
+function myFunc() {
+         this.x = &quot;water&quot;;
+         console.log(this.x);
+}
+myFunc();//输出为‘water’
+</code></pre></li>
+<li><p>作为构造函数调用<br>  作为构造函数，this指向生成的对象。</p>
+<pre><code>function Stone() {
+         this.name = &quot;stone&quot;;
+}
+myStone = new Stone();
+console.log(myStone.name);//输入‘stone’
+</code></pre></li>
+<li><p>通过apply/call调用<br>  apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象</p>
+<pre><code>name = &apos;Global&apos;;
+var Stone = {
+    name: &apos;Stone&apos;
+};
+function showName() {
+    console.log(this.name);
+}
+showName.apply();//输入为‘Global’,未改变this指向
+showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象
+</code></pre></li>
+<li><p>自执行函数<br>  自行函数this指向全局对象，浏览器中是window</p>
+<pre><code>name=&apos;Global&apos;;
+var Stone={
+   name:&apos;stone&apos;,
+   showName:function(){
+       console.log(this.name);
+       (function(){
+           console.log(this.name);
+       })();
+   }
+};
+Stone.showName();//输出stone Global
+</code></pre></li>
 </ol>
 <h3 id="6-js事件代理（委托）"><a href="#6-js事件代理（委托）" class="headerlink" title="6.js事件代理（委托）"></a>6.js事件代理（委托）</h3><p>  事件阶段：事件捕获-&gt;目标-&gt;事件冒泡</p>
 <ol>
