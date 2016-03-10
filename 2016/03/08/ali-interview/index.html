@@ -55,8 +55,6 @@
                 
                     <a class="main-nav-link" href="/archives">Archives</a>
                 
-                    <a class="main-nav-link" href="/categories">Categories</a>
-                
                     <a class="main-nav-link" href="/tags">Tags</a>
                 
                     <a class="main-nav-link" href="/about">About</a>
@@ -83,7 +81,7 @@
 (function ($) {
     $('.search-form').on('submit', function (e) {
         var keyword = $('.search-form-input[name="wd"]').val();
-        window.location = 'https://www.baidu.com/s?wd=site:sj719045032.github.io ' + keyword;
+        window.location = 'https://www.baidu.com/s?wd=' + keyword;
         return false;
     });
 })(jQuery);
@@ -100,8 +98,6 @@
                 
                     <td><a class="main-nav-link" href="/archives">Archives</a></td>
                 
-                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
-                
                     <td><a class="main-nav-link" href="/tags">Tags</a></td>
                 
                     <td><a class="main-nav-link" href="/about">About</a></td>
@@ -116,7 +112,7 @@
 (function ($) {
     $('.search-form').on('submit', function (e) {
         var keyword = $('.search-form-input[name="wd"]').val();
-        window.location = 'https://www.baidu.com/s?wd=site:sj719045032.github.io ' + keyword;
+        window.location = 'https://www.baidu.com/s?wd=' + keyword;
         return false;
     });
 })(jQuery);
@@ -155,15 +151,7 @@
             <table>
                 <tr>
                     
-                    <td><a href="http://sj719045032.github.io/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="twitter"><i class="fa fa-twitter"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="dribbble"><i class="fa fa-dribbble"></i></a></td>
-                    
-                    <td><a href="/" target="_blank" title="rss"><i class="fa fa-rss"></i></a></td>
+                    <td><a href="https://github.com/sj719045032/" target="_blank" title="github"><i class="fa fa-github"></i></a></td>
                     
                 </tr>
             </table>
@@ -527,7 +515,7 @@ Stone.showName();//输出stone Global
 
 </div>
 
-    <a data-url="http://sj719045032.github.io/2016/03/08/ali-interview/" data-id="cilks6dub000020umsaont1wk" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
+    <a data-url="http://sj719045032.github.io/2016/03/08/ali-interview/" data-id="cillmh3n200000cumr3n06ge1" class="article-share-link"><i class="fa fa-share"></i>分享到</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -616,18 +604,6 @@ Stone.showName();//输出stone Global
     
 </article>
 
-
-    
-    <section id="comments">
-    
-        
-    <div id="disqus_thread">
-        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </div>
-
-    
-    </section>
-
 </section>
             
                 <aside id="sidebar">
@@ -636,18 +612,9 @@ Stone.showName();//输出stone Global
     <div class="widget-wrap">
         <h3 class="widget-title">最新文章</h3>
         <div class="widget">
-            <ul id="recent-post" class="">
+            <ul id="recent-post" class="no-thumbnail">
                 
                     <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/03/08/ali-interview/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-                        </div>
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
@@ -658,15 +625,6 @@ Stone.showName();//输出stone Global
                 
                     <li>
                         
-                        <div class="item-thumbnail">
-                            <a href="/2016/03/03/simple_grammar/" class="thumbnail">
-    
-    
-        <span style="background-image:url(http://git.oschina.net/uploads/17/82617_XuChunH.jpg?1441725952)" alt="markdown基本语法" class="thumbnail-image"></span>
-    
-</a>
-                        </div>
-                        
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2016/03/03/simple_grammar/" class="title">markdown基本语法</a></p>
@@ -676,15 +634,6 @@ Stone.showName();//输出stone Global
                 
                     <li>
                         
-                        <div class="item-thumbnail">
-                            <a href="/2016/03/03/bibao/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-                        </div>
-                        
                         <div class="item-inner">
                             <p class="item-category"></p>
                             <p class="item-title"><a href="/2016/03/03/bibao/" class="title">js闭包之我见</a></p>
@@ -693,15 +642,6 @@ Stone.showName();//输出stone Global
                     </li>
                 
                     <li>
-                        
-                        <div class="item-thumbnail">
-                            <a href="/2016/03/03/javacript_add/" class="thumbnail">
-    
-    
-        <span class="thumbnail-image thumbnail-none"></span>
-    
-</a>
-                        </div>
                         
                         <div class="item-inner">
                             <p class="item-category"></p>
@@ -714,8 +654,6 @@ Stone.showName();//输出stone Global
         </div>
     </div>
 
-    
-        
     
         
     <div class="widget-wrap">
@@ -742,22 +680,6 @@ Stone.showName();//输出stone Global
             <a href="/tags/javascrippt/" style="font-size: 10px;">javascrippt</a> <a href="/tags/markdown/" style="font-size: 10px;">markdown</a> <a href="/tags/闭包-javascript/" style="font-size: 10px;">闭包 javascript</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
         </div>
     </div>
-
-    
-        
-    <div class="widget-wrap widget-list">
-        <h3 class="widget-title">链接</h3>
-        <div class="widget">
-            <ul>
-                
-                    <li>
-                        <a href="http://hexo.io">Hexo</a>
-                    </li>
-                
-            </ul>
-        </div>
-    </div>
-
 
     
     <div id="toTop" class="fa fa-chevron-up"></div>
