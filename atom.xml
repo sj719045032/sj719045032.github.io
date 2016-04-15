@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://sj719045032.github.io/"/>
-  <updated>2016-03-09T11:42:38.443Z</updated>
+  <updated>2016-04-15T02:37:51.635Z</updated>
   <id>http://sj719045032.github.io/</id>
   
   <author>
@@ -16,11 +16,31 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>��������ʽ�ٲ���</title>
+    <link href="http://sj719045032.github.io/2016/04/15/regular-expression/"/>
+    <id>http://sj719045032.github.io/2016/04/15/regular-expression/</id>
+    <published>2016-04-15T02:28:34.000Z</published>
+    <updated>2016-04-15T02:37:51.635Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;img/regular-expression.png&quot; alt=&quot;avatar&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;img/regular-expression.png&quot; alt=&quot;avatar&quot;&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>2016阿里实习生第一次电话面试总结</title>
     <link href="http://sj719045032.github.io/2016/03/08/ali-interview/"/>
     <id>http://sj719045032.github.io/2016/03/08/ali-interview/</id>
     <published>2016-03-08T03:58:08.000Z</published>
-    <updated>2016-03-09T11:42:38.443Z</updated>
+    <updated>2016-03-14T01:42:02.954Z</updated>
     
     <content type="html">&lt;p&gt;　　　　2016年3月7日，晚上接到了人生中第一次电话面试-阿里实习生招聘电话面试。打来电话的是一个姐姐，下面是一些问题。&lt;/p&gt;
 &lt;h3 id=&quot;1-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&quot;&gt;&lt;a href=&quot;#1-angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&quot; class=&quot;headerlink&quot; title=&quot;1.angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&quot;&gt;&lt;/a&gt;1.angular数据双向绑定的原理，以及与检测对象改变的实现双向绑定有什么不同&lt;/h3&gt;&lt;p&gt;   当时答得不太好。后面上网查了资料，发现这篇文章讲得比较详细&lt;a href=&quot;http://sentsin.com/web/779.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sentsin.com/web/779.html&lt;/a&gt;.简言之，从模型到ui的更新，通过$digest循环遍历该作用域注册的所有watch，对比模型值是否改变，如果出现新值就把变化更新到视图上。从UI更新到模型，核心是$apply函数，如果是使用angular扩展的事件，那么angular就是自动调用$apply函数然后启动watch检测，将数据变化更新到模型。&lt;/p&gt;
@@ -111,7 +131,7 @@
 var myObject = {};
 myObject.x = &amp;quot;stone&amp;quot;;
 myObject.myFunc = myFunc;
-myObject.myFunc();//输入为‘stone’
+myObject.myFunc();//输出为‘stone’
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;作为函数调用&lt;br&gt;  如果函数直接作为函数调用，那么this绑定到全局对象，浏览器中也就是window。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var x = &amp;apos;stone&amp;apos;;
@@ -126,7 +146,7 @@ myFunc();//输出为‘water’
          this.name = &amp;quot;stone&amp;quot;;
 }
 myStone = new Stone();
-console.log(myStone.name);//输入‘stone’
+console.log(myStone.name);//输出‘stone’
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;通过apply/call调用&lt;br&gt;  apply/call可以改变函数的调用对象，他们的第一个参数代表改变后调用这个函数的对象&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;name = &amp;apos;Global&amp;apos;;
@@ -136,7 +156,7 @@ var Stone = {
 function showName() {
     console.log(this.name);
 }
-showName.apply();//输入为‘Global’,未改变this指向
+showName.apply();//输出为‘Global’,未改变this指向
 showName.apply(Stone);//输出为‘Stone’，this指向为Stone对象
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;自执行函数&lt;br&gt;  自行函数this指向全局对象，浏览器中是window&lt;/p&gt;

@@ -371,6 +371,8 @@ code {
 .header-inner #logo .logo {
   margin-right: 5px;
   display: inline-block;
+  -webkit-border-radius: 64px;
+  border-radius: 64px;
 }
 .header-inner #logo .site-title {
   font-size: 16px;
@@ -644,6 +646,8 @@ code {
   margin: 10px auto 20px;
   width: 128px;
   height: 128px;
+  -webkit-border-radius: 64px;
+  border-radius: 64px;
 }
 #profile .inner .base-info #name,
 #profile .inner .base-info #title,
